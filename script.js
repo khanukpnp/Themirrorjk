@@ -1,15 +1,9 @@
-const postFiles = [
-  "content/blog/post-2.json",
-  "content/blog/post-1.json"
-];
-
 // BLOG LOADER
 async function loadBlogPosts() {
   const container = document.getElementById("blog-list");
   if (!container) return;
 
-  // Add every post file you want to show here, newest first.
-  // When you create post-2.json, post-3.json, you list them here.
+  // List of blog post data files to load, newest first
   const postFiles = [
     "content/blog/post-1.json"
   ];
@@ -27,10 +21,10 @@ async function loadBlogPosts() {
     }
   }
 
-  // Clear container first
+  // Clear anything that was there
   container.innerHTML = "";
 
-  // Build cards
+  // Build each article card in the same style as before
   posts.forEach(post => {
     const card = document.createElement("article");
     card.className = "card post";
@@ -56,7 +50,7 @@ async function loadBlogPosts() {
   });
 }
 
-// CLOCK, YEAR, MENU, CONTACT MODAL, ETC
+// FOOTER YEAR
 function setYear() {
   const y = document.getElementById("year");
   if (y) {
@@ -64,6 +58,7 @@ function setYear() {
   }
 }
 
+// CONTACT MODAL
 function initContactModal() {
   const openBtn = document.getElementById("open-contact");
   const closeBtn = document.getElementById("close-contact");
@@ -75,6 +70,7 @@ function initContactModal() {
   closeBtn.addEventListener("click", () => modal.close());
 }
 
+// MOBILE MENU
 function initHamburger() {
   const burger = document.getElementById("hamburger");
   const menu = document.getElementById("mobile-menu");
@@ -86,7 +82,7 @@ function initHamburger() {
     if (expanded) {
       menu.hidden = true;
     } else {
-      // clone desktop nav into mobile menu
+      // clone desktop nav into mobile drawer
       const navList = document.getElementById("nav-list").cloneNode(true);
       navList.classList.add("mobile-nav-clone");
       menu.innerHTML = "";
@@ -96,6 +92,7 @@ function initHamburger() {
   });
 }
 
+// CLOCK (CEST)
 function initClockCEST() {
   const cestEl = document.querySelector("#clock-cest span");
   if (!cestEl) return;
@@ -108,7 +105,7 @@ function initClockCEST() {
   setInterval(update, 60000);
 }
 
-// Run everything after page loads
+// RUN ON PAGE LOAD
 document.addEventListener("DOMContentLoaded", () => {
   setYear();
   initContactModal();
