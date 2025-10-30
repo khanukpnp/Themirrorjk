@@ -1,287 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Mirror Jammu Kashmir</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
-</head>
-<body class="site-body">
-
-  <!-- ===== HEADER / BRAND ===== -->
-  <header class="site-header">
-    <div class="brand-block">
-      <h1 class="brand-title">THE MIRROR JAMMU KASHMIR</h1>
-      <p class="brand-subtitle">Voice · Human Rights · Global Advocacy</p>
-    </div>
-
-    <!-- Clock + calendars + socials row -->
-    <div class="meta-row">
-      <div class="datetime">
-        <span id="clockCEST" class="clock-ce">Thursday, October 30 — CEST</span>
-        <span id="islamicCal" class="cal-text">Islamic: …</span>
-        <span id="hinduCal" class="cal-text">Hindu: …</span>
-      </div>
-      <nav class="social-bar">
-        <button class="social-btn">X / Twitter</button>
-        <button class="social-btn">Instagram</button>
-        <button class="social-btn">YouTube</button>
-        <button class="social-btn">Facebook</button>
-        <button class="social-btn">Share ↗</button>
-      </nav>
-    </div>
-  </header>
-
-  <!-- ===== NAV BAR ===== -->
-  <nav class="main-nav">
-    <ul class="nav-list">
-      <li class="nav-item has-dropdown">
-        <span class="nav-icon">🏠</span> Home
-        <ul class="dropdown">
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </li>
-
-      <li class="nav-item has-dropdown">
-        <span class="nav-icon">📰</span> Breaking News
-        <ul class="dropdown">
-          <li><a href="#">Latest Alerts</a></li>
-          <li><a href="#">Security Updates</a></li>
-        </ul>
-      </li>
-
-      <li class="nav-item has-dropdown">
-        <span class="nav-icon">📝</span> Blog
-        <ul class="dropdown">
-          <li><a href="#">Editorial</a></li>
-          <li><a href="#">Opinion</a></li>
-          <li><a href="#">Analysis</a></li>
-        </ul>
-      </li>
-
-      <li class="nav-item has-dropdown">
-        <span class="nav-icon">🎥</span> Vlog
-        <ul class="dropdown">
-          <li><a href="#">Latest Uploads</a></li>
-          <li><a href="#">Field Reports</a></li>
-        </ul>
-      </li>
-
-      <li class="nav-item has-dropdown">
-        <span class="nav-icon">📰</span> E-Paper
-        <ul class="dropdown">
-          <li><a href="#">Today’s PDF</a></li>
-          <li><a href="#">Archive</a></li>
-        </ul>
-      </li>
-
-      <li class="nav-item has-dropdown">
-        <span class="nav-icon">📍</span> Jammu Kashmir
-        <ul class="dropdown">
-          <li><a href="#">Ground Situation</a></li>
-          <li><a href="#">History & Context</a></li>
-        </ul>
-      </li>
-
-      <li class="nav-item has-dropdown">
-        <span class="nav-icon">📜</span> Historical Documents
-        <ul class="dropdown">
-          <li><a href="#">Resolutions</a></li>
-          <li><a href="#">Treaties</a></li>
-        </ul>
-      </li>
-
-      <li class="nav-item has-dropdown">
-        <span class="nav-icon">🕊️</span> UN & Human Rights
-        <ul class="dropdown">
-          <li><a href="#">UNHRC Sessions</a></li>
-          <li><a href="#">Reports & Evidence</a></li>
-        </ul>
-      </li>
-
-      <li class="nav-item has-dropdown">
-        <span class="nav-icon">🌐</span> Global Advocacy
-        <ul class="dropdown">
-          <li><a href="#">Diplomatic Outreach</a></li>
-          <li><a href="#">Allied Voices</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- ===== TICKER ===== -->
-  <section class="ticker-bar">
-    <div class="ticker-label">BREAKING</div>
-    <div class="ticker-track">
-      <div class="ticker-text" id="tickerText">
-        SAMPLE TICKER: Delegations raise Jammu & Kashmir human rights at international forums • Protest calls for self-determination • New testimony submitted to UNHRC •
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== LANG + SEARCH ===== -->
-  <section class="tools-row">
-    <div class="lang-select">
-      🌍
-      <select id="languageDropdown">
-        <option>English</option>
-        <option>Deutsch</option>
-        <option>Français</option>
-        <option>Русский</option>
-        <option>עברית</option>
-        <option>اردو</option>
-        <option>हिन्दी</option>
-        <option>العربية</option>
-        <option>Español</option>
-        <option>Italiano</option>
-        <option>Nederlands</option>
-      </select>
-    </div>
-
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search The Mirror JK…" />
-      <button id="searchBtn">🔍</button>
-    </div>
-  </section>
-
-  <!-- ===== MAIN CONTENT WRAPPER ===== -->
-  <main class="main-wrapper">
-    <!-- BLOG COLUMN -->
-    <section class="blog-col">
-      <h2 class="section-title">Latest Editorial & Reports</h2>
-
-      <!-- Example Post Card -->
-      <article class="post-card">
-        <div class="post-meta">
-          <span class="post-tag">Editorial</span>
-          <span class="post-date">30 Oct 2025</span>
-        </div>
-        <h3 class="post-headline">
-          International Silence and the Cost of Human Rights in Jammu & Kashmir
-        </h3>
-        <p class="post-excerpt">
-          The people of Jammu & Kashmir continue to demand their right to self-determination.
-          Here’s what global institutions say publicly — and what is actually happening on the ground.
-        </p>
-        <button class="read-more-btn">Read Article →</button>
-      </article>
-
-      <!-- Another Post Card -->
-      <article class="post-card">
-        <div class="post-meta">
-          <span class="post-tag">Analysis</span>
-          <span class="post-date">29 Oct 2025</span>
-        </div>
-        <h3 class="post-headline">
-          Delegations and Advocacy: Who is Listening, Who is Silent
-        </h3>
-        <p class="post-excerpt">
-          A summary of recent diplomatic outreach and responses from world capitals.
-        </p>
-        <button class="read-more-btn">Read Article →</button>
-      </article>
-
-      <!-- Add New Content Placeholder -->
-      <div class="add-card">
-        <p>+ Add new blog post</p>
-      </div>
-    </section>
-
-    <!-- VLOG COLUMN -->
-    <aside class="vlog-col">
-      <h2 class="section-title">Latest Vlog</h2>
-
-      <div class="video-frame">
-        <!-- Replace src with your YouTube embed -->
-        <iframe
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-          title="The Mirror JK Vlog"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
-      </div>
-
-      <div class="vlog-desc">
-        <h3 class="vlog-title">On the ground: Voices from Kashmir</h3>
-        <p class="vlog-text">
-          Testimony, witness statements, and urgent calls for accountability.
-        </p>
-        <button class="read-more-btn">Watch on YouTube →</button>
-      </div>
-
-      <!-- Add New Video Placeholder -->
-      <div class="add-card">
-        <p>+ Add new vlog entry</p>
-      </div>
-    </aside>
-  </main>
-
-  <!-- ===== NEWSLETTER + FOOTER ===== -->
-  <section class="newsletter-bar">
-    <div class="newsletter-inner">
-      <div class="newsletter-text">
-        <strong>Stay informed.</strong> Get updates from The Mirror JK.
-      </div>
-      <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true">
-        <input type="email" name="email" placeholder="Your email" required />
-        <button type="submit" class="newsletter-btn">Subscribe ✉</button>
-      </form>
-    </div>
-  </section>
-
-  <footer class="site-footer">
-    <div class="footer-top">
-      <div class="footer-contact">
-        <p><strong>Contact us</strong></p>
-        <p>Email: contact@themirrorjk.com</p>
-        <p>Phone: +41 783 13 12 13</p>
-        <button id="openContact" class="contact-btn">Open Contact Form</button>
-      </div>
-
-      <div class="footer-social">
-        <p><strong>Follow & Share</strong></p>
-        <div class="footer-icons">
-          <button class="social-btn small">X</button>
-          <button class="social-btn small">IG</button>
-          <button class="social-btn small">YT</button>
-          <button class="social-btn small">FB</button>
-          <button class="social-btn small">Share</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>© 2025 The Mirror Jammu Kashmir. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- ===== CONTACT MODAL ===== -->
-  <div id="contactModal" class="modal-backdrop hidden">
-    <div class="modal-card" data-netlify="true">
-      <h2>Contact The Mirror JK</h2>
-      <form name="contact" method="POST" data-netlify="true">
-        <input type="text" name="name" placeholder="Your name" required />
-        <input type="email" name="replyto" placeholder="Your email" required />
-        <textarea name="message" rows="4" placeholder="Your message…" required></textarea>
-        <div class="modal-actions">
-          <button type="submit" class="modal-submit">Submit</button>
-          <button type="button" id="closeContact" class="modal-close">Exit ✕</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- ===== MOBILE STICKY BAR ===== -->
-  <nav class="mobile-sticky">
-    <button class="mobile-btn">🏠</button>
-    <button class="mobile-btn">🔍</button>
-    <button class="mobile-btn">❤️</button>
-    <button class="mobile-btn">↗ Share</button>
-    <button class="mobile-btn">☰</button>
-  </nav>
-
-</body>
-</html>
-
+/* Updated v2 styles (single-line calendars + weather, new cards) */
+:root{ --maroon:#7a001e; --maroon-2:#8a102e; --text:#111; --text-inv:#fff; --bg:#f5f5f7; --card:#fff; --accent:#e53935; --shadow:0 6px 24px rgba(0,0,0,.08),0 2px 8px rgba(0,0,0,.06); }
+*{ box-sizing:border-box } html,body{ margin:0; padding:0; scroll-behavior:smooth } body{ font-family: Georgia, "Times New Roman", serif; background:var(--bg); color:var(--text) }
+.theme-maroon .site-header{ background:var(--maroon) } .site-header{ color:#fff; padding:18px 8px 12px; text-align:center }
+.header-row{ display:flex; align-items:center; justify-content:center; gap:14px } .logo{ width:72px; height:72px; object-fit:contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,.25)); border-radius:12px; background:#fff3; padding:4px }
+.site-title{ margin:0; font-size: clamp(28px, 5.8vw, 56px); line-height:1.05; letter-spacing:.5px; font-weight:700; text-transform: uppercase; text-shadow: 0 1px 0 rgba(255,255,255,.3), 0 2px 0 rgba(0,0,0,.15), 0 4px 6px rgba(0,0,0,.35) }
+.subheading{ margin-top:6px; font-size: clamp(11px, 1.6vw, 14px); letter-spacing:.8px; text-transform: uppercase }
+ 
+.bar{ background:#fff; border-bottom:1px solid #e7e7ea; box-shadow: var(--shadow) }
+.bar .row{ display:flex; align-items:center; justify-content:center; gap:10px; padding:6px 8px }
+.bar .row.tight{ padding:4px 8px; gap:8px } .bar .row.super-tight{ padding:2px 6px; gap:6px }
+.bar .row.nowrap{ flex-wrap:nowrap; overflow:hidden }
+.chip{ background:#f0f2f5; border-radius:999px; padding:6px 10px; font-size:13px; white-space:nowrap; box-shadow: inset 0 1px 0 #fff4, 0 1px 2px rgba(0,0,0,.05) }
+.chip.tiny{ padding:4px 8px; font-size:12px }
+ 
+#weather-bar{ white-space:nowrap } 
+#weather-bar .city{ display:inline-flex; align-items:center; gap:6px; background:#fff7f5; border:1px solid #ffe1db; border-radius:999px; padding:4px 8px; font-size:12px; margin-right:6px }
+#weather-bar .city .temp{ font-weight:700 } #weather-bar .city .name{ font-weight:600 }
+ 
+.ticker-wrap{ background:var(--maroon); color:#fff; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px; padding:8px 10px; position:sticky; top:0; z-index:40 }
+.ticker{ display:flex; align-items:center; gap:10px; overflow:hidden; flex:1 }
+.ticker > span{ font-weight:800; letter-spacing:.6px } .ticker ul{ display:flex; gap:40px; list-style:none; padding:0; margin:0; animation: ticker 28s linear infinite }
+.ticker li{ text-transform:uppercase; font-size:12px; white-space:nowrap; opacity:.95 } @keyframes ticker{ from{ transform:translateX(0)} to{ transform:translateX(-50%)} }
+.tools{ display:flex; align-items:center; gap:8px } .lang-select select, .search input, .search button{ font-size:12px }
+.lang-select select{ padding:6px 10px; border-radius:999px; border:1px solid #e3e3e8; background:#fff }
+.search{ display:flex; gap:6px } .search input{ padding:6px 10px; border-radius:999px; border:1px solid #e3e3e8 } .search button{ padding:6px 10px; border-radius:999px; border:1px solid #e3e3e8; background:#fff; cursor:pointer }
+ 
+.navbar{ background:var(--maroon-2); color:#fff } .navbar .hamburger{ display:none; background:none; border:none; color:#fff; padding:10px 12px; font-size:14px }
+.nav-list{ display:flex; align-items:center; justify-content:center; gap:4px; list-style:none; margin:0; padding:6px; flex-wrap:wrap }
+.nav-item{ position:relative } .nav-btn, .nav-item > a.nav-btn{ font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size: 12px; letter-spacing:.3px; color:#fff; background:transparent; border:none; padding:8px 10px; cursor:pointer; border-radius:10px }
+.nav-btn:hover, .nav-item > a.nav-btn:hover{ background:rgba(255,255,255,.12) }
+.dropdown{ position:absolute; left:0; top:calc(100% + 6px); background:#fff; color:#111; border-radius:12px; box-shadow:var(--shadow); padding:8px; display:none; min-width: 180px }
+.dropdown.wide{ min-width: 260px } .dropdown a{ display:block; padding:8px 10px; border-radius:8px; color:#111; text-decoration:none; font-size:13px } .dropdown a:hover{ background:#f3f5f8 }
+.nav-item.open .dropdown{ display:block }
+ 
+.mobile-menu{ display:none; padding:10px; background:#fff; box-shadow: var(--shadow) }
+.mobile-menu ul{ list-style:none; padding:0; margin:0 } .mobile-menu .nav-item{ border-bottom:1px solid #eee; padding:6px 0 }
+.mobile-menu .nav-btn, .mobile-menu .nav-item > a.nav-btn{ color:#111 } .mobile-menu .dropdown{ position:static; display:block; box-shadow:none; padding:4px 0; background:transparent } .mobile-menu .dropdown a{ padding:6px 8px }
+ 
+.main{ max-width: 1200px; margin: 18px auto; padding: 0 12px }
+.cards{ display:grid; gap:12px } .cards.two{ grid-template-columns: repeat(2,1fr) } .cards.three{ grid-template-columns: repeat(3,1fr) }
+.card{ background:var(--card); border-radius:18px; overflow:hidden; box-shadow:var(--shadow) }
+.card .media{ position:relative } .card .media img{ width:100%; height:200px; object-fit:cover }
+.badge{ position:absolute; top:10px; left:10px; background:#ef5350; color:#fff; border-radius:999px; padding:6px 10px; font-size:12px; font-weight:700 }
+.badge.time, .badge.duration{ right:10px; left:auto; background:#333; opacity:.9 }
+.card .card-body{ padding:14px } .card .card-body h3{ margin:0 0 8px } .card .card-body p{ margin:0 0 10px; color:#333; font-size:14px }
+.meta{ display:flex; align-items:center; gap:12px; font-size:13px; color:#666; margin-bottom:6px }
+.read-more{ color:#e53935; text-decoration:none; font-weight:700 }
+ 
+.vlogs{ padding:12px } .vlogs-header{ display:flex; align-items:center; justify-content:space-between }
+.vlogs-sub{ margin:4px 0 8px; color:#444; font-size:14px }
+.filter-pills{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px } .pill{ border:none; background:#eef1f5; padding:8px 14px; border-radius:999px; cursor:pointer } .pill.active{ background:#e74c3c; color:#fff }
+.btn{ background:var(--maroon); color:#fff; border:none; padding:8px 12px; border-radius:10px; text-decoration:none; cursor:pointer }
+.btn.outline{ background:#fff; color:var(--maroon); border:1px solid var(--maroon) } .btn.yt{ background:#e74c3c }
+.center{ display:flex; justify-content:center; margin:12px 0 }
+ 
+.section-rail{ margin-top:18px } .rail-header{ background:#e53935; color:#fff; padding:10px 14px; border-radius:16px 16px 0 0; font-weight:800 }
+.card.rail .media img{ height:220px }
+ 
+.epaper{ padding:12px } .contact-wrap{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:16px } .newsletter, .contact{ padding:12px }
+.newsletter form, .contact form{ display:flex; gap:8px; flex-wrap:wrap }
+input[type="email"], input[type="text"], textarea, input[type="file"]{ width:100%; max-width:320px; padding:8px 10px; border:1px solid #dfe3eb; border-radius:10px; font-size:14px }
+ 
+.footer{ background:var(--maroon); color:#fff; margin-top:24px; padding:14px 10px; text-align:center } .footer .social{ display:flex; justify-content:center; gap:10px; margin-bottom:6px } .footer .social a, .footer .social button{ background:#ffffff18; border:1px solid #ffffff30; color:#fff; padding:6px 10px; border-radius:999px; text-decoration:none }
+ 
+.modal{ border:none; border-radius:16px; padding:0 } .modal-card{ padding:16px 16px 12px; background:#fff; border-radius:16px; min-width: min(90vw, 520px) }
+.modal-card h3{ margin:0 0 10px } .modal-card label{ display:block; font-size:14px; margin:8px 0 } .modal-actions{ display:flex; justify-content:flex-end; gap:8px; margin-top:10px }
+ 
+.mobile-sticky{ position:fixed; bottom:0; left:0; right:0; background:#fff; border-top:1px solid #eee; display:none; justify-content:space-around; padding:8px 0; z-index:50 } .mobile-sticky a, .mobile-sticky button{ background:none; border:none; font-size:20px }
+ 
+@media (max-width: 1000px){ .cards.three{ grid-template-columns: repeat(2, 1fr) } }
+@media (max-width: 780px){ .navbar .hamburger{ display:inline-block } .nav-list{ display:none } .mobile-menu{ display:block } .mobile-sticky{ display:flex } .cards.two{ grid-template-columns: 1fr } }
+@media (max-width: 620px){ .cards.three{ grid-template-columns: 1fr } .logo{ width:56px; height:56px } .chip.tiny{ font-size:11px; padding:3px 6px } #weather-bar .city{ font-size:11px } }
+ 
