@@ -117,3 +117,57 @@ const postFiles = [
   "content/blog/post-2.json",
   "content/blog/post-1.json"
 ];
+// BLOG LOADER
+async function loadBlogPosts() {
+  const container = document.getElementById("blog-list");
+  if (!container) return;
+
+  // List of JSON files to show, newest first
+  const postFiles = [
+    "content/blog/post-1.json"
+  ];
+
+  const posts = [];
+
+  for (const file of postFiles) {
+    try {
+      const res = await fetch(file);
+      if (!res.ok) continue;
+      const data = await res.json();
+      posts.push(data);
+    } catch (err) {
+      console.warn("Could not load", file, err);
+    }
+  }
+
+  container.innerHTML = "";
+
+  posts.forEach(post => {
+    const card = document.createElement("article");
+    card.className = "card post";
+
+    card.innerHTML = `
+      <div class="media">
+        <span class="badge cat">${post.category || ""}</span>
+        <span class="badge time">${post.readTime || ""}</span>
+        <img src="${post.image || "assets/sample-1.jpg"}" alt="" />
+      </div>
+      <div class="card-body">
+        <h3>${post.title}</h3>
+        <p>${post.summary}</p>
+        <div class="meta">
+          <span class="author">${post.author || ""}</span>
+          <span class="date">${post.date || ""}</span>
+        </div>
+        <a class="read-more" href="${post.link || "#"}">Read More →</a>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+// Run blog loader when page is ready
+document.addEventListener("DOMContentLoaded", () => {
+  loadBlogPosts();
+});
