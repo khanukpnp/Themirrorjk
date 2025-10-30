@@ -113,3 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initClockCEST();
   loadBlogPosts();
 });
+const postFiles = [
+  "content/blog/post-2.json",
+  "content/blog/post-1.json"
+];
