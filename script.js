@@ -166,8 +166,10 @@ async function loadBlogPosts() {
     container.appendChild(card);
   });
 }
-
-// Run blog loader when page is ready
 document.addEventListener("DOMContentLoaded", () => {
+  setYear();
+  initContactModal();
+  initHamburger();
+  initClockCEST();
   loadBlogPosts();
 });
