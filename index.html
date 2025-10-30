@@ -1,354 +1,355 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>THE MIRROR JAMMU KASHMIR</title>
-  <meta name="description" content="The Mirror Jammu Kashmir — Champion justice & amplify the voices of the unheard." />
-  <link rel="preconnect" href="https://api.open-meteo.com">
+  <meta
+    name="description"
+    content="The Mirror Jammu Kashmir — Champion justice & amplify the voices of the unheard."
+  />
+
+  <!-- basic SEO -->
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="The Mirror Jammu Kashmir" />
+  <meta property="og:description" content="Champion justice & amplify the voices of the unheard." />
+  <meta property="og:type" content="website" />
+
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
 </head>
+
 <body class="theme-maroon">
+  <!-- ================= HEADER ================= -->
   <header class="site-header">
     <div class="header-row">
       <img src="assets/logo.png" alt="Logo" class="logo" />
-      <h1 class="site-title">THE MIRROR JAMMU KASHMIR</h1>
+      <div class="header-textwrap">
+        <h1 class="site-title">THE MIRROR JAMMU KASHMIR</h1>
+        <div class="subheading">
+          CHAMPION JUSTICE &amp; AMPLIFY THE VOICES OF THE UNHEARD…
+          REVEALING THE TRUTH OTHERS BURY.
+        </div>
+      </div>
       <img src="assets/logo.png" alt="Logo" class="logo" />
     </div>
-    <div class="subheading">CHAMPION JUSTICE &amp; AMPLIFY THE VOICES OF THE UNHEARD… REVEALING THE TRUTH BEYOND BORDERS</div>
-  </header>
- 
-  <section class="bar clocks-line" aria-label="Clocks and Calendars">
-    <div class="row tight nowrap">
-      <div id="clock-cest" class="chip tiny">🕒 <span>Loading CEST…</span></div>
-      <div id="cal-hijri" class="chip tiny">📅 <span>Hijri…</span></div>
-      <div id="cal-hindi" class="chip tiny">📅 <span>VS…</span></div>
-      <div id="tz-ist" class="chip tiny">🕒 IST (JKL): <span>—:—</span></div>
-      <div id="tz-pkt" class="chip tiny">🕒 PKT (GBM): <span>—:—</span></div>
+
+    <!-- CLOCK / CALENDARS / SOCIAL -->
+    <div class="utility-bar">
+      <div class="time-cal">
+        <span id="live-clock" class="clock">Thursday, Oct 30 — CEST 12:00</span>
+        <span id="islamic-date" class="cal-badge">Islamic: —</span>
+        <span id="hindi-date" class="cal-badge">Hindi: —</span>
+      </div>
+
+      <div class="social-icons">
+        <a href="#" class="social-link">
+          <img src="assets/social-icons/x.svg" alt="X / Twitter" />
+          <span>X</span>
+        </a>
+        <a href="#" class="social-link">
+          <img src="assets/social-icons/yt.svg" alt="YouTube" />
+          <span>YouTube</span>
+        </a>
+        <a href="#" class="social-link">
+          <img src="assets/social-icons/ig.svg" alt="Instagram" />
+          <span>Instagram</span>
+        </a>
+        <a href="#" class="social-link">
+          <img src="assets/social-icons/fb.svg" alt="Facebook" />
+          <span>Facebook</span>
+        </a>
+        <button class="social-link share-btn">
+          <img src="assets/social-icons/share.svg" alt="Share" />
+          <span>Share</span>
+        </button>
+      </div>
     </div>
-  </section>
- 
-  <section class="bar weather-line" aria-label="Weather">
-    <div class="row nowrap super-tight" id="weather-bar"></div>
-  </section>
- 
-  <section class="ticker-wrap" aria-label="Breaking Ticker">
-    <div class="ticker">
-      <span>BREAKING:</span>
-      <ul id="ticker-items">
-        <li>Welcome to The Mirror Jammu Kashmir — empowering truth beyond borders.</li>
-        <li>Submit your editorials and vlogs via the contact form below.</li>
-        <li>Multilingual support &amp; mobile-first design are built-in.</li>
-      </ul>
+
+    <!-- BREAKING TICKER -->
+    <div class="ticker-bar">
+      <div class="ticker-label">BREAKING</div>
+      <div class="ticker-wrapper">
+        <div id="ticker-content" class="ticker-move">
+          <!-- filled by script.js from CMS/json -->
+          LOADING LATEST UPDATES…
+        </div>
+      </div>
     </div>
-    <div class="tools">
-      <label class="lang-select">
-        🌍
-        <select id="language-select" aria-label="Select language">
-          <option value="en" selected>English</option>
-          <option value="de">German</option>
-          <option value="fr">French</option>
-          <option value="ru">Russian</option>
+
+    <!-- LANGUAGE + SEARCH -->
+    <div class="tools-row">
+      <div class="lang-select">
+        <label for="language-dropdown" class="visually-hidden">Language</label>
+        <select id="language-dropdown">
+          <option value="en">English</option>
+          <option value="de">Deutsch</option>
+          <option value="fr">Français</option>
+          <option value="ru">Русский</option>
           <option value="he">Hebrew</option>
-          <option value="ur">Urdu</option>
-          <option value="hi">Hindi</option>
-          <option value="ar">Arabic</option>
-          <option value="es">Spanish</option>
-          <option value="it">Italian</option>
-          <option value="nl">Dutch</option>
+          <option value="ur">اردو</option>
+          <option value="hi">हिंदी</option>
+          <option value="ar">العربية</option>
+          <option value="es">Español</option>
+          <option value="it">Italiano</option>
+          <option value="nl">Nederlands</option>
         </select>
-      </label>
-      <form class="search" role="search" onsubmit="event.preventDefault(); fakeSearch();">
-        <input id="search-input" type="search" placeholder="Search…" aria-label="Search" />
-        <button type="submit">🔍</button>
-      </form>
+      </div>
+
+      <div class="search-wrapper">
+        <input
+          id="site-search"
+          class="search-input"
+          type="search"
+          placeholder="Search The Mirror JK…"
+          aria-label="Search"
+        />
+        <button class="search-button" id="search-btn" aria-label="Search">
+          🔍
+        </button>
+      </div>
     </div>
-  </section>
- 
-  <nav class="navbar" aria-label="Primary Navigation">
-    <button class="hamburger" aria-expanded="false" aria-controls="mobile-menu" id="hamburger">☰ Menu</button>
-    <ul class="nav-list" id="nav-list">
-      <li class="nav-item has-sub">
-        <button class="nav-btn">🏠 Home</button>
-        <div class="dropdown">
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-          <a href="#chief-editor">Chief Editor</a>
-        </div>
-      </li>
-      <li class="nav-item"><a class="nav-btn" href="#breaking">🆕 Breaking News</a></li>
-      <li class="nav-item has-sub">
-        <button class="nav-btn">📝 Blog</button>
-        <div class="dropdown wide">
-          <a href="#editorial">Editorial</a>
-          <a href="#opinion">Opinion</a>
-          <a href="#updates">Latest Updates</a>
-        </div>
-      </li>
-      <li class="nav-item has-sub">
-        <button class="nav-btn">🎥 Vlog</button>
-        <div class="dropdown">
-          <a href="#vlog-latest">Latest Vlogs</a>
-          <a href="#vlog-archive">Archive</a>
-        </div>
-      </li>
-      <li class="nav-item"><a class="nav-btn" href="#epaper">📰 E-Paper</a></li>
-      <li class="nav-item has-sub">
-        <button class="nav-btn">📍 Jammu Kashmir</button>
-        <div class="dropdown wide">
-          <a href="#jk-region">Regions</a>
-          <a href="#jk-history">History</a>
-          <a href="#jk-culture">Culture</a>
-        </div>
-      </li>
-      <li class="nav-item has-sub">
-        <button class="nav-btn">📜 Historical Documents</button>
-        <div class="dropdown wide">
-          <a href="#docs-treaties">Treaties</a>
-          <a href="#docs-archives">Archives</a>
-          <a href="#docs-letters">Letters</a>
-        </div>
-      </li>
-      <li class="nav-item has-sub">
-        <button class="nav-btn">🕊️ UN &amp; Human Rights</button>
-        <div class="dropdown">
-          <a href="#unhrc">UNHRC</a>
-          <a href="#reports">Reports</a>
-          <a href="#advocacy">Advocacy</a>
-        </div>
-      </li>
-      <li class="nav-item has-sub">
-        <button class="nav-btn">🌐 Global Advocacy</button>
-        <div class="dropdown wide">
-          <a href="#campaigns">Campaigns</a>
-          <a href="#partners">Partners</a>
-          <a href="#get-involved">Get Involved</a>
-        </div>
-      </li>
-    </ul>
-    <div id="mobile-menu" class="mobile-menu" hidden></div>
-  </nav>
- 
-  <main class="main">
-    <section id="blog" class="card-col">
-      <h2>📝 Latest Articles</h2>
-      <div class="cards three">
-        <article class="card post">
-          <div class="media">
-            <span class="badge cat">Politics</span>
-            <span class="badge time">5 min read</span>
-            <img src="assets/sample-1.jpg" alt="Kashmir mountains" />
-          </div>
-          <div class="card-body">
-            <h3>Kashmir Peace Process: New Hope for Dialogue</h3>
-            <p>International mediators express optimism about recent developments in the Kashmir peace process, with both sides showing willingness to engage.</p>
-            <div class="meta">
-              <span class="author">Sarah Ahmad Khan</span>
-              <span class="date">2025-01-15</span>
+
+    <!-- NAV BAR WITH ICONS + DROPDOWNS -->
+    <nav class="main-nav">
+      <ul class="nav-list">
+        <li class="nav-item has-dropdown">
+          <button class="nav-link">
+            🏠 Home
+          </button>
+          <ul class="dropdown">
+            <li><a href="#">About</a></li>
+            <li><a href="#" id="contact-open">Contact</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item has-dropdown">
+          <button class="nav-link">📰 Breaking News</button>
+          <ul class="dropdown">
+            <li><a href="#">Latest Alerts</a></li>
+            <li><a href="#">Crisis Watch</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item has-dropdown">
+          <button class="nav-link">📝 Blog</button>
+          <ul class="dropdown">
+            <li><a href="#">Editorials</a></li>
+            <li><a href="#">Opinion</a></li>
+            <li><a href="#">Field Reports</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item has-dropdown">
+          <button class="nav-link">🎥 Vlog</button>
+          <ul class="dropdown">
+            <li><a href="#">YouTube Channel</a></li>
+            <li><a href="#">Media Briefings</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item has-dropdown">
+          <button class="nav-link">📰 E-Paper</button>
+          <ul class="dropdown">
+            <li><a href="#">Download PDF</a></li>
+            <li><a href="#">Archive</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item has-dropdown">
+          <button class="nav-link">📍 Jammu Kashmir</button>
+          <ul class="dropdown">
+            <li><a href="#">Ground Situation</a></li>
+            <li><a href="#">Testimonies</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item has-dropdown">
+          <button class="nav-link">📜 Historical Documents</button>
+          <ul class="dropdown">
+            <li><a href="#">UN Resolutions</a></li>
+            <li><a href="#">Treaties &amp; Accords</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item has-dropdown">
+          <button class="nav-link">🕊️ UN &amp; Human Rights</button>
+          <ul class="dropdown">
+            <li><a href="#">UNHRC Sessions</a></li>
+            <li><a href="#">Reports &amp; Dossiers</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item has-dropdown">
+          <button class="nav-link">🌐 Global Advocacy</button>
+          <ul class="dropdown">
+            <li><a href="#">Campaigns</a></li>
+            <li><a href="#">Allies &amp; Partners</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MOBILE STICKY BAR (shown via CSS on small screens) -->
+  <div class="mobile-sticky-bar">
+    <button>🏠</button>
+    <button>🔍</button>
+    <button>❤</button>
+    <button>🔗</button>
+    <button>☰</button>
+  </div>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="page-content">
+    <section class="content-grid">
+      <!-- BLOG / NEWS LIST -->
+      <section class="blog-section">
+        <h2 class="section-title">Latest Articles</h2>
+        <div id="blog-list" class="blog-list">
+          <!-- Filled dynamically from /posts/*.md by script.js -->
+          <article class="blog-card demo">
+            <img src="assets/sample-thumb1.jpg" alt="thumb" class="blog-thumb" />
+            <div class="blog-body">
+              <h3 class="blog-headline">Loading articles…</h3>
+              <p class="blog-excerpt">
+                Your journalism will appear here. You will edit in the CMS.
+              </p>
+              <div class="blog-meta">
+                <span class="blog-date">—</span>
+                <span class="blog-tag">Editorial</span>
+              </div>
             </div>
-            <a class="read-more" href="#">Read More →</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- VLOG / VIDEO SECTION -->
+      <aside class="vlog-section">
+        <h2 class="section-title">Latest Vlog</h2>
+        <div id="vlog-embed" class="vlog-embed">
+          <!-- script.js will inject YouTube iframe from /vlog/example-video-1.json -->
+          <div class="video-wrapper">
+            <iframe
+              class="yt-frame"
+              src="https://www.youtube.com/embed/VIDEO_ID?rel=0"
+              title="YouTube video"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
           </div>
-        </article>
-        <article class="card post">
-          <div class="media">
-            <span class="badge cat">Human Rights</span>
-            <span class="badge time">8 min read</span>
-            <img src="assets/sample-2.jpg" alt="UN assembly" />
+          <div class="vlog-meta">
+            <div class="vlog-title">Your Latest Press Statement</div>
+            <div class="vlog-date">—</div>
           </div>
-          <div class="card-body">
-            <h3>UN Human Rights Report: Urgent Action Needed</h3>
-            <p>Latest UN Human Rights Council report highlights critical issues in conflict zones, calling for immediate international intervention and monitoring.</p>
-            <div class="meta">
-              <span class="author">Dr. Ahmed Hassan</span>
-              <span class="date">2025-01-14</span>
-            </div>
-            <a class="read-more" href="#">Read More →</a>
-          </div>
-        </article>
-        <article class="card post">
-          <div class="media">
-            <span class="badge cat">Education</span>
-            <span class="badge time">6 min read</span>
-            <img src="assets/sample-3.jpg" alt="Classroom" />
-          </div>
-          <div class="card-body">
-            <h3>Educational Reform Initiative Launched in Remote Areas</h3>
-            <p>New educational programs aim to provide quality education to children in remote mountain villages, focusing on both traditional and modern skills.</p>
-            <div class="meta">
-              <span class="author">Fatima Sheikh</span>
-              <span class="date">2025-01-13</span>
-            </div>
-            <a class="read-more" href="#">Read More →</a>
-          </div>
-        </article>
-      </div>
-    </section>
- 
-    <section id="vlog" class="vlogs card">
-      <div class="vlogs-header">
-        <h2>Video Reports &amp; Vlogs</h2>
-        <a class="btn yt" href="https://youtube.com" target="_blank" rel="noopener">Visit Channel ▶</a>
-      </div>
-      <p class="vlogs-sub">Watch in-depth reports, exclusive interviews, and documentary-style content.</p>
-      <div class="filter-pills">
-        <button class="pill active">All</button>
-        <button class="pill">Interview</button>
-        <button class="pill">Documentary</button>
-        <button class="pill">Analysis</button>
-        <button class="pill">Culture</button>
-        <button class="pill">Forum</button>
-        <button class="pill">Feature</button>
-      </div>
-      <div class="cards three media-cards">
-        <article class="card video">
-          <div class="media">
-            <span class="badge cat">Interview</span>
-            <span class="badge duration">15:32</span>
-            <img src="assets/sample-1.jpg" alt="Interview" />
-          </div>
-          <div class="card-body">
-            <h3>Exclusive Interview: Peace Process Developments</h3>
-            <p>In-depth conversation with diplomatic sources about ongoing negotiations and next steps.</p>
-          </div>
-        </article>
-        <article class="card video">
-          <div class="media">
-            <span class="badge cat">Documentary</span>
-            <span class="badge duration">12:45</span>
-            <img src="assets/sample-2.jpg" alt="Documentary" />
-          </div>
-          <div class="card-body">
-            <h3>Ground Report: Community Resilience Stories</h3>
-            <p>Documenting how local communities are adapting and supporting each other.</p>
-          </div>
-        </article>
-        <article class="card video">
-          <div class="media">
-            <span class="badge cat">Analysis</span>
-            <span class="badge duration">18:20</span>
-            <img src="assets/sample-3.jpg" alt="Analysis" />
-          </div>
-          <div class="card-body">
-            <h3>Analysis: Human Rights Legal Framework</h3>
-            <p>Expert breakdown of key legal mechanisms and obligations.</p>
-          </div>
-        </article>
-      </div>
-      <div class="center"><button class="btn load">Load More Videos</button></div>
-    </section>
- 
-    <section class="section-rail">
-      <div class="rail-header"><span>🌐 International News</span></div>
-      <div class="cards two">
-        <article class="card rail">
-          <div class="media"><img src="assets/sample-2.jpg" alt="UNSC" /></div>
-          <div class="card-body">
-            <h3>UN Security Council Addresses Regional Conflicts</h3>
-            <p>Emergency session discusses peaceful resolution mechanisms for disputed territories worldwide.</p>
-            <div class="meta"><span class="author">International Desk</span><span class="date">1 hour ago</span></div>
-            <a class="read-more" href="#">Read More →</a>
-          </div>
-        </article>
-        <article class="card rail">
-          <div class="media"><img src="assets/sample-1.jpg" alt="EU Parliament" /></div>
-          <div class="card-body">
-            <h3>European Parliament Calls for Press Freedom</h3>
-            <p>Resolution passed supporting independent journalism in conflict zones.</p>
-            <div class="meta"><span class="author">Brussels Correspondent</span><span class="date">6 hours ago</span></div>
-            <a class="read-more" href="#">Read More →</a>
-          </div>
-        </article>
-      </div>
-      <div class="center"><a class="btn outline" href="#">View All International News</a></div>
-    </section>
- 
-    <section class="section-rail">
-      <div class="rail-header"><span>🧑‍⚕️ Human Rights</span></div>
-      <div class="cards two">
-        <article class="card rail">
-          <div class="media"><img src="assets/sample-3.jpg" alt="Aid" /></div>
-          <div class="card-body">
-            <h3>Humanitarian Organizations Launch Aid Initiative</h3>
-            <p>International relief efforts focus on providing essential services to affected communities.</p>
-            <div class="meta"><span class="author">Human Rights Desk</span><span class="date">3 hours ago</span></div>
-            <a class="read-more" href="#">Read More →</a>
-          </div>
-        </article>
-        <article class="card rail">
-          <div class="media"><img src="assets/sample-2.jpg" alt="Legal" /></div>
-          <div class="card-body">
-            <h3>Legal Advocacy Groups File Petition</h3>
-            <p>Human rights lawyers present case for civilian protection measures.</p>
-            <div class="meta"><span class="author">Legal Correspondent</span><span class="date">5 hours ago</span></div>
-            <a class="read-more" href="#">Read More →</a>
-          </div>
-        </article>
-      </div>
-      <div class="center"><a class="btn outline" href="#">View All Human Rights</a></div>
-    </section>
- 
-    <section id="epaper" class="epaper card">
-      <h2>📰 E-Paper Upload</h2>
-      <p>Upload your digital publication (PDF). This section is a placeholder; connect to your preferred CMS or cloud later.</p>
-      <form name="epaper" method="POST" data-netlify="true">
-        <input type="file" name="file" accept=".pdf" />
-        <button class="btn" type="submit">Upload</button>
-      </form>
-    </section>
- 
-    <section id="contact" class="contact-wrap">
-      <div class="newsletter card">
-        <h2>📬 Newsletter</h2>
-        <form name="newsletter" method="POST" data-netlify="true">
-          <input type="email" name="email" placeholder="your@email.com" required />
-          <button class="btn" type="submit">Subscribe</button>
-        </form>
-      </div>
-      <div class="contact card">
-        <h2>✉️ Contact</h2>
-        <p>Email: <a href="mailto:contact@themirrorjk.com">contact@themirrorjk.com</a> • Phone: <a href="tel:+41783131213">+41 783 13 12 13</a></p>
-        <button class="btn" id="open-contact">Open Contact Form</button>
-      </div>
+        </div>
+      </aside>
     </section>
   </main>
- 
-  <footer class="footer">
-    <div class="social">
-      <a href="#" aria-label="Twitter">𝕏</a>
-      <a href="#" aria-label="Instagram">📸</a>
-      <a href="#" aria-label="YouTube">▶️</a>
-      <a href="#" aria-label="Facebook">📘</a>
-      <button class="btn small outline" id="share-btn">Share</button>
-    </div>
-    <p>© <span id="year"></span> THE MIRROR JAMMU KASHMIR. All rights reserved.</p>
-  </footer>
- 
-  <dialog id="contact-modal" class="modal">
-    <form name="contact" method="POST" data-netlify="true" class="modal-card">
-      <h3>Contact Form</h3>
-      <label> Name <input type="text" name="name" required /></label>
-      <label> Email <input type="email" name="email" required /></label>
-      <label> Message <textarea name="message" rows="4" required></textarea></label>
-      <div class="modal-actions">
-        <button type="submit" class="btn">Submit</button>
-        <button type="button" class="btn outline" id="close-contact">Exit</button>
+
+  <!-- ================= NEWSLETTER ================= -->
+  <section class="newsletter-bar">
+    <form name="newsletter" method="POST" data-netlify="true" class="newsletter-form">
+      <input type="hidden" name="form-name" value="newsletter" />
+      <label for="newsletter-email" class="newsletter-label">
+        Get breaking updates from The Mirror JK:
+      </label>
+      <div class="newsletter-controls">
+        <input
+          id="newsletter-email"
+          class="newsletter-input"
+          type="email"
+          name="email"
+          placeholder="your@email.com"
+          required
+        />
+        <button class="newsletter-button" type="submit">Subscribe</button>
       </div>
     </form>
-  </dialog>
- 
-  <nav class="mobile-sticky">
-    <a href="#top" aria-label="Home">🏠</a>
-    <button id="sticky-search" aria-label="Search">🔍</button>
-    <button id="sticky-like" aria-label="Like">❤️</button>
-    <button id="sticky-share" aria-label="Share">🔗</button>
-    <button id="sticky-menu" aria-label="Menu">☰</button>
-  </nav>
- 
-  <script src="script.js"></script>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-left">
+        <div class="footer-brand">
+          <div class="footer-title">THE MIRROR JAMMU KASHMIR</div>
+          <div class="footer-sub">Unfiltered. Unafraid. Unheard voices amplified.</div>
+        </div>
+
+        <div class="footer-contact">
+          <div>Email: <a href="mailto:contact@themirrorjk.com">contact@themirrorjk.com</a></div>
+          <div>Phone: <a href="tel:+41783131213">+41 783 13 12 13</a></div>
+          <button id="contact-open-footer" class="contact-button">Contact Form</button>
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <div class="footer-links-col">
+          <h4>Sections</h4>
+          <a href="#">Breaking News</a>
+          <a href="#">Blog / Editorials</a>
+          <a href="#">Vlog / Media</a>
+          <a href="#">Jammu Kashmir</a>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Documents</h4>
+          <a href="#">UN &amp; Human Rights</a>
+          <a href="#">Global Advocacy</a>
+          <a href="#">Historical Archive</a>
+          <a href="#">E-Paper</a>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Legal</h4>
+          <a href="#">Impressum / Legal Notice</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© <span id="year"></span> The Mirror Jammu Kashmir. All rights reserved.</div>
+      <div>
+        <button id="dark-toggle" class="dark-toggle">🌙 Dark Mode</button>
+        <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CONTACT MODAL (Netlify form) -->
+  <div id="contact-modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close" id="contact-close">✕</button>
+      <h2>Contact The Mirror JK</h2>
+      <form
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        class="contact-form"
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <label>
+          Your Name
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          Your Email
+          <input type="email" name="email" required />
+        </label>
+        <label>
+          Message
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+        <div class="contact-actions">
+          <button type="submit" class="send-btn">Send</button>
+          <button type="button" class="exit-btn" id="contact-exit">Exit</button>
+        </div>
+      </form>
+    </div>
+    <div class="modal-backdrop"></div>
+  </div>
 </body>
 </html>
- <section id="blog" class="card-col">
-  <h2>📝 Latest Articles</h2>
-  <div class="cards three">
-    ...existing <article class="card post"> ... </article> cards...
-
