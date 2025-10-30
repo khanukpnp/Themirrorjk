@@ -1,3 +1,8 @@
+const postFiles = [
+  "content/blog/post-2.json",
+  "content/blog/post-1.json"
+];
+
 // BLOG LOADER
 async function loadBlogPosts() {
   const container = document.getElementById("blog-list");
