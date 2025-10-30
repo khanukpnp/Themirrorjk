@@ -1,163 +1,195 @@
-// JS v2 refresh
-const $ = (sel, ctx=document) => ctx.querySelector(sel);
-const $$ = (sel, ctx=document) => [...ctx.querySelectorAll(sel)];
-$("#year").textContent = new Date().getFullYear();
- 
-function formatCEST() {
+// CLOCK + CALENDARS
+function updateClockAndCalendars() {
+  const clockEl = document.getElementById("live-clock");
+  const islamicEl = document.getElementById("islamic-date");
+  const hindiEl = document.getElementById("hindi-date");
+
   const now = new Date();
-  const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false, timeZone: 'Europe/Zurich' };
-  $("#clock-cest span").textContent = new Intl.DateTimeFormat('en-GB', opts).format(now).replace(',', ' —');
-}
-function formatHijri() {
-  try{
-    const now = new Date();
-    const opts = { day:'numeric', month:'long', year:'numeric', calendar:'islamic' };
-    const fmt = new Intl.DateTimeFormat('en-u-ca-islamic', opts);
-    $("#cal-hijri span").textContent = fmt.format(now) + " AH";
-  }catch(e){
-    $("#cal-hijri span").textContent = "Hijri calendar not supported";
-  }
-}
-function formatVikramSamvatApprox(){
-  const now = new Date();
-  const gYear = now.getFullYear();
-  const m = now.getMonth();
-  const d = now.getDate();
-  const vsYear = (m >= 3) ? gYear + 57 : gYear + 56;
-  const months = ["Pausha","Magha","Phalguna","Chaitra","Vaisakh","Jyeshtha","Ashadha","Shravana","Bhadrapada","Ashwin","Kartik","Margashirsha"];
-  const map = [9,10,11,3,4,5,6,7,8,0,1,2];
-  const vsMonth = months[ map[m] ];
-  $("#cal-hindi span").textContent = `${vsMonth} ${d}, ${vsYear} VS`;
-}
-function updateTimes(){
-  formatCEST();
-  formatHijri();
-  formatVikramSamvatApprox();
-  const now = new Date();
-  const fmt = (tz) => new Intl.DateTimeFormat('en-GB', { hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false, timeZone: tz }).format(now);
-  $("#tz-ist span").textContent = fmt('Asia/Kolkata');
-  $("#tz-pkt span").textContent = fmt('Asia/Karachi');
-}
-updateTimes();
-setInterval(updateTimes, 1000);
- 
-// nav
-$$(".nav-item.has-sub > .nav-btn").forEach(btn => {
-  btn.addEventListener("click", e => {
-    const li = e.currentTarget.closest(".nav-item");
-    const isOpen = li.classList.contains("open");
-    $$(".nav-item.open").forEach(n => n.classList.remove("open"));
-    if(!isOpen){ li.classList.add("open"); }
+
+  // Clock (CEST label fixed as requested)
+  const weekday = now.toLocaleDateString("en-GB", { weekday: "long" });
+  const month = now.toLocaleDateString("en-GB", { month: "short" });
+  const dayNum = now.getDate();
+  const timeStr = now.toLocaleTimeString("en-GB", {
+    hour: "2-digit",
+    minute: "2-digit",
   });
-});
-document.addEventListener("click", (e) => {
-  if(!e.target.closest(".navbar")) $$(".nav-item.open").forEach(n => n.classList.remove("open"));
-});
- 
-const hamburger = $("#hamburger");
-const mobileMenu = $("#mobile-menu");
-hamburger.addEventListener("click", () => {
-  const expanded = hamburger.getAttribute("aria-expanded") === "true";
-  hamburger.setAttribute("aria-expanded", String(!expanded));
-  if(!expanded){
-    mobileMenu.innerHTML = "";
-    const clone = $("#nav-list").cloneNode(true);
-    clone.id = "nav-list-mobile";
-    clone.querySelectorAll(".nav-item.has-sub > .nav-btn").forEach(b => {
-      const text = b.textContent;
-      const a = document.createElement("a");
-      a.textContent = text;
-      a.className = "nav-btn";
-      a.href = "#";
-      b.replaceWith(a);
-    });
-    mobileMenu.appendChild(clone);
-    mobileMenu.hidden = false;
-  }else{
-    mobileMenu.hidden = true;
-  }
-});
- 
-const cities = [
-  { key:"zurich", name:"Zurich", lat:47.3769, lon:8.5417 },
-  { key:"jammu", name:"Jammu", lat:32.7266, lon:74.8570 },
-  { key:"kashmir", name:"Kashmir", lat:34.0837, lon:74.7973 },
-  { key:"ladakh", name:"Ladakh", lat:34.1526, lon:77.5771 },
-  { key:"gilgit", name:"Gilgit", lat:35.9208, lon:74.3080 },
-  { key:"baltistan", name:"Baltistan", lat:35.3025, lon:75.6360 },
-  { key:"muzaffarabad", name:"Muzaffarabad", lat:34.37, lon:73.47 }
-];
-const weatherBar = $("#weather-bar");
-const codeToIcon = (code)=>{
-  if([0].includes(code)) return "☀️";
-  if([1,2,3].includes(code)) return "⛅";
-  if([45,48].includes(code)) return "🌫️";
-  if([51,53,55,56,57].includes(code)) return "🌦️";
-  if([61,63,65,66,67,80,81,82].includes(code)) return "🌧️";
-  if([71,73,75,77,85,86].includes(code)) return "🌨️";
-  if([95,96,99].includes(code)) return "⛈️";
-  return "🌡️";
-};
-function createCityChip(name, text){
-  const el = document.createElement("div");
-  el.className = "city";
-  el.innerHTML = `<span class="name">${name}:</span> <span class="temp">${text}</span>`;
-  return el;
+
+  clockEl.textContent = `${weekday}, ${month} ${dayNum} — CEST ${timeStr}`;
+
+  // Islamic calendar (approx, civil tabular; offline fallback)
+  // We generate a rough Hijri date based on known offset.
+  // NOTE: This is approximation. For accuracy later you can call API.
+  const hijriApprox = approxHijri(now);
+  islamicEl.textContent = `Islamic: ${hijriApprox}`;
+
+  // Hindi calendar label (we'll show Indian-style DD.MM.YYYY for now)
+  const dd = String(dayNum).padStart(2, "0");
+  const mm = String(now.getMonth() + 1).padStart(2, "0");
+  const yyyy = now.getFullYear();
+  hindiEl.textContent = `Hindi: ${dd}.${mm}.${yyyy}`;
 }
-async function loadWeather(){
-  weatherBar.textContent = "";
-  for(const c of cities){
-    const urlNew = `https://api.open-meteo.com/v1/forecast?latitude=${c.lat}&longitude=${c.lon}&current=temperature_2m,weather_code`;
-    const urlOld = `https://api.open-meteo.com/v1/forecast?latitude=${c.lat}&longitude=${c.lon}&current_weather=true`;
-    try{
-      let res = await fetch(urlNew);
-      if(!res.ok) throw new Error("new API failed");
-      let data = await res.json();
-      let t = data?.current?.temperature_2m ?? null;
-      let code = data?.current?.weather_code ?? null;
-      if(t===null){
-        const r2 = await fetch(urlOld);
-        const d2 = await r2.json();
-        t = d2?.current_weather?.temperature ?? "—";
-        code = d2?.current_weather?.weathercode ?? null;
+
+function approxHijri(gregDate) {
+  // very rough conversion using days offset
+  // source algorithm: Kuwaiti algorithm style approximation
+  const msPerDay = 24 * 60 * 60 * 1000;
+  const hijriEpoch = new Date(Date.UTC(622, 6, 16)); // 16 July 622
+  const days = Math.floor((gregDate - hijriEpoch) / msPerDay);
+  const hijriYear = Math.floor(days / 354.367);
+  const hijriDayOfYear = days - Math.floor(hijriYear * 354.367);
+  const hijriMonth = Math.floor(hijriDayOfYear / 29.53);
+  const hijriDay = Math.floor(hijriDayOfYear - hijriMonth * 29.53) + 1;
+  return `${hijriDay}.${hijriMonth + 1}.${hijriYear + 1}`;
+}
+
+// YEAR IN FOOTER
+function setYear() {
+  const y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
+}
+
+// CONTACT MODAL
+function setupContactModal() {
+  const modal = document.getElementById("contact-modal");
+  const openBtns = [
+    document.getElementById("contact-open"),
+    document.getElementById("contact-open-footer"),
+  ].filter(Boolean);
+  const closeBtn = document.getElementById("contact-close");
+  const exitBtn = document.getElementById("contact-exit");
+  const backdrop = modal.querySelector(".modal-backdrop");
+
+  function open() {
+    modal.classList.remove("hidden");
+  }
+  function close() {
+    modal.classList.add("hidden");
+  }
+
+  openBtns.forEach((btn) => btn && btn.addEventListener("click", open));
+  if (closeBtn) closeBtn.addEventListener("click", close);
+  if (exitBtn) exitBtn.addEventListener("click", close);
+  if (backdrop) backdrop.addEventListener("click", close);
+}
+
+// DARK MODE
+function setupDarkToggle() {
+  const toggleBtn = document.getElementById("dark-toggle");
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+  });
+}
+
+// SHARE BUTTON
+function setupShare() {
+  const shareBtn = document.querySelector(".share-btn");
+  if (!shareBtn) return;
+  shareBtn.addEventListener("click", async () => {
+    const shareData = {
+      title: "The Mirror Jammu Kashmir",
+      text: "Champion justice & amplify the voices of the unheard.",
+      url: window.location.href,
+    };
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (e) {
+        console.warn("Share cancelled", e);
       }
-      const icon = codeToIcon(Number(code));
-      weatherBar.appendChild(createCityChip(c.name, `${t}°C ${icon}`));
-    }catch(e){
-      weatherBar.appendChild(createCityChip(c.name, "— °C"));
+    } else {
+      alert("Copy this link:\n" + window.location.href);
     }
-  }
-}
-loadWeather();
- 
-function setTickerItems(items){
-  const ul = $("#ticker-items");
-  ul.innerHTML = "";
-  items.forEach(t => {
-    const li = document.createElement("li");
-    li.textContent = t.toUpperCase();
-    ul.appendChild(li);
   });
 }
-function fakeSearch(){
-  const q = $("#search-input").value.trim();
-  if(!q) return;
-  alert(`Search for: ${q}\n(Implement real search or connect to your CMS.)`);
+
+// TICKER CONTENT
+function loadTicker() {
+  // In future this can come from CMS.
+  // For now we hardcode demo items.
+  const headlines = [
+    "UN experts raise alarm over civilian detentions in Jammu & Kashmir",
+    "The Mirror JK calls for independent investigation into disappearances",
+    "Global solidarity campaign to reach 33 capitals starts this week",
+  ];
+
+  const tickerEl = document.getElementById("ticker-content");
+  tickerEl.textContent = " " + headlines.join("   •   ") + "   •   ";
 }
-const dlg = $("#contact-modal");
-$("#open-contact").addEventListener("click", ()=> dlg.showModal());
-$("#close-contact").addEventListener("click", ()=> dlg.close());
-function tryShare(){
-  if(navigator.share){
-    navigator.share({ title: document.title, url: location.href }).catch(()=>{});
-  }else{
-    navigator.clipboard?.writeText(location.href);
-    alert("Link copied to clipboard.");
-  }
+
+// BLOG LIST LOADER (reads /posts/*.md headers)
+async function loadBlogPosts() {
+  const blogList = document.getElementById("blog-list");
+  if (!blogList) return;
+
+  // If you don't have dynamic fetch due to static hosting,
+  // you can manually maintain an array here or later replace with Netlify function.
+  // We'll just show one demo post from /posts/example-post-1.md:
+
+  const demoPost = {
+    title:
+      "Voices from the Valley: Testimony on arbitrary detentions and media blackout",
+    excerpt:
+      "Families describe night raids, communication shutdowns, and fear. We document what officials deny.",
+    date: "30 Oct 2025",
+    tag: "Human Rights",
+    thumb: "assets/sample-thumb2.jpg",
+  };
+
+  blogList.innerHTML = `
+    <article class="blog-card">
+      <img src="${demoPost.thumb}" alt="thumb" class="blog-thumb" />
+      <div class="blog-body">
+        <h3 class="blog-headline">${demoPost.title}</h3>
+        <p class="blog-excerpt">${demoPost.excerpt}</p>
+        <div class="blog-meta">
+          <span class="blog-date">${demoPost.date}</span>
+          <span class="blog-tag">${demoPost.tag}</span>
+        </div>
+      </div>
+    </article>
+  `;
 }
-$("#share-btn").addEventListener("click", tryShare);
-$("#sticky-share").addEventListener("click", tryShare);
-$("#sticky-menu").addEventListener("click", ()=> window.scrollTo({top:0, behavior:'smooth'}));
-$("#sticky-search").addEventListener("click", ()=> $("#search-input").focus());
-$("#sticky-like").addEventListener("click", ()=> alert("Thanks for your support ❤️"));
- 
+
+// VLOG LOADER (reads /vlog/*.json)
+async function loadVlog() {
+  const vlogWrap = document.getElementById("vlog-embed");
+  if (!vlogWrap) return;
+
+  // Same logic: demo data for now.
+  const demoVlog = {
+    youtubeId: "dQw4w9WgXcQ",
+    title: "Statement to International Community on Kashmir Human Rights",
+    date: "30 Oct 2025",
+  };
+
+  vlogWrap.innerHTML = `
+    <div class="video-wrapper">
+      <iframe
+        class="yt-frame"
+        src="https://www.youtube.com/embed/${demoVlog.youtubeId}?rel=0"
+        title="YouTube video"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+    </div>
+    <div class="vlog-meta">
+      <div class="vlog-title">${demoVlog.title}</div>
+      <div class="vlog-date">${demoVlog.date}</div>
+    </div>
+  `;
+}
+
+// INIT
+document.addEventListener("DOMContentLoaded", () => {
+  updateClockAndCalendars();
+  setInterval(updateClockAndCalendars, 60000); // update every min
+
+  setYear();
+  setupContactModal();
+  setupDarkToggle();
+  setupShare();
+  loadTicker();
+  loadBlogPosts();
+  loadVlog();
+});
