@@ -1,175 +1,50 @@
-// BLOG LOADER
-async function loadBlogPosts() {
-  const container = document.getElementById("blog-list");
-  if (!container) return;
-
-  // List of blog post data files to load, newest first
-  const postFiles = [
-    "content/blog/post-1.json"
-  ];
-
-  const posts = [];
-
-  for (const file of postFiles) {
-    try {
-      const res = await fetch(file);
-      if (!res.ok) continue;
-      const data = await res.json();
-      posts.push(data);
-    } catch (err) {
-      console.warn("Could not load", file, err);
-    }
-  }
-
-  // Clear anything that was there
-  container.innerHTML = "";
-
-  // Build each article card in the same style as before
-  posts.forEach(post => {
-    const card = document.createElement("article");
-    card.className = "card post";
-
-    card.innerHTML = `
-      <div class="media">
-        <span class="badge cat">${post.category || ""}</span>
-        <span class="badge time">${post.readTime || ""}</span>
-        <img src="${post.image || "assets/sample-1.jpg"}" alt="" />
-      </div>
-      <div class="card-body">
-        <h3>${post.title}</h3>
-        <p>${post.summary}</p>
-        <div class="meta">
-          <span class="author">${post.author || ""}</span>
-          <span class="date">${post.date || ""}</span>
-        </div>
-        <a class="read-more" href="${post.link || "#"}">Read More →</a>
-      </div>
-    `;
-
-    container.appendChild(card);
-  });
+// CLOCK + CALENDARS DEMO
+function updateClock() {
+  const clockEl = document.getElementById("clockCEST");
+  if (!clockEl) return;
+  const now = new Date();
+  // We'll just render a friendly format like "Thu, Oct 30 — CEST"
+  const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const dayName = days[now.getDay()];
+  const monthName = months[now.getMonth()];
+  const dateNum = now.getDate();
+  clockEl.textContent = `${dayName}, ${monthName} ${dateNum} — CEST`;
 }
+updateClock();
+setInterval(updateClock, 60000);
 
-// FOOTER YEAR
-function setYear() {
-  const y = document.getElementById("year");
-  if (y) {
-    y.textContent = new Date().getFullYear();
-  }
+// Placeholder Islamic/Hindu calendar text
+const islamicEl = document.getElementById("islamicCal");
+if (islamicEl) {
+  islamicEl.textContent = "Islamic: 5 Rabi' al-Thani 1447 (example)";
+}
+const hinduEl = document.getElementById("hinduCal");
+if (hinduEl) {
+  hinduEl.textContent = "Hindu: Kartik, Shukla Paksha (example)";
 }
 
 // CONTACT MODAL
-function initContactModal() {
-  const openBtn = document.getElementById("open-contact");
-  const closeBtn = document.getElementById("close-contact");
-  const modal = document.getElementById("contact-modal");
+const contactModal = document.getElementById("contactModal");
+const openContact = document.getElementById("openContact");
+const closeContact = document.getElementById("closeContact");
 
-  if (!openBtn || !closeBtn || !modal) return;
-
-  openBtn.addEventListener("click", () => modal.showModal());
-  closeBtn.addEventListener("click", () => modal.close());
+if (openContact && contactModal) {
+  openContact.addEventListener("click", () => {
+    contactModal.classList.remove("hidden");
+  });
 }
-
-// MOBILE MENU
-function initHamburger() {
-  const burger = document.getElementById("hamburger");
-  const menu = document.getElementById("mobile-menu");
-  if (!burger || !menu) return;
-
-  burger.addEventListener("click", () => {
-    const expanded = burger.getAttribute("aria-expanded") === "true";
-    burger.setAttribute("aria-expanded", !expanded);
-    if (expanded) {
-      menu.hidden = true;
-    } else {
-      // clone desktop nav into mobile drawer
-      const navList = document.getElementById("nav-list").cloneNode(true);
-      navList.classList.add("mobile-nav-clone");
-      menu.innerHTML = "";
-      menu.appendChild(navList);
-      menu.hidden = false;
-    }
+if (closeContact && contactModal) {
+  closeContact.addEventListener("click", () => {
+    contactModal.classList.add("hidden");
   });
 }
 
-// CLOCK (CEST)
-function initClockCEST() {
-  const cestEl = document.querySelector("#clock-cest span");
-  if (!cestEl) return;
-  function update() {
-    const now = new Date();
-    const opts = { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Europe/Zurich" };
-    cestEl.textContent = new Intl.DateTimeFormat("en-GB", opts).format(now) + " CEST";
-  }
-  update();
-  setInterval(update, 60000);
-}
-
-// RUN ON PAGE LOAD
-document.addEventListener("DOMContentLoaded", () => {
-  setYear();
-  initContactModal();
-  initHamburger();
-  initClockCEST();
-  loadBlogPosts();
-});
-const postFiles = [
-  "content/blog/post-2.json",
-  "content/blog/post-1.json"
-];
-// BLOG LOADER
-async function loadBlogPosts() {
-  const container = document.getElementById("blog-list");
-  if (!container) return;
-
-  // List of JSON files to show, newest first
-  const postFiles = [
-    "content/blog/post-1.json"
-  ];
-
-  const posts = [];
-
-  for (const file of postFiles) {
-    try {
-      const res = await fetch(file);
-      if (!res.ok) continue;
-      const data = await res.json();
-      posts.push(data);
-    } catch (err) {
-      console.warn("Could not load", file, err);
-    }
-  }
-
-  container.innerHTML = "";
-
-  posts.forEach(post => {
-    const card = document.createElement("article");
-    card.className = "card post";
-
-    card.innerHTML = `
-      <div class="media">
-        <span class="badge cat">${post.category || ""}</span>
-        <span class="badge time">${post.readTime || ""}</span>
-        <img src="${post.image || "assets/sample-1.jpg"}" alt="" />
-      </div>
-      <div class="card-body">
-        <h3>${post.title}</h3>
-        <p>${post.summary}</p>
-        <div class="meta">
-          <span class="author">${post.author || ""}</span>
-          <span class="date">${post.date || ""}</span>
-        </div>
-        <a class="read-more" href="${post.link || "#"}">Read More →</a>
-      </div>
-    `;
-
-    container.appendChild(card);
+// SIMPLE SEARCH DEMO
+const searchBtn = document.getElementById("searchBtn");
+const searchInput = document.getElementById("searchInput");
+if (searchBtn && searchInput) {
+  searchBtn.addEventListener("click", () => {
+    alert("Search for: " + searchInput.value);
   });
 }
-document.addEventListener("DOMContentLoaded", () => {
-  setYear();
-  initContactModal();
-  initHamburger();
-  initClockCEST();
-  loadBlogPosts();
-});
