@@ -1,380 +1,93 @@
-<!DOCTYPE html>
-<html lang="en" class="no-js">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>THE MIRROR JAMMU KASHMIR</title>
-  <meta name="description" content="The Mirror Jammu Kashmir — Champion justice & amplify the voices of the unheard." />
-
-  <!-- Basic reset / fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
-
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
-</head>
-
-<body class="theme-maroon">
-  <!-- MOBILE STICKY BOTTOM BAR -->
-  <nav class="mobile-bottom-bar">
-    <button class="mobile-bottom-btn" data-target="home"><span>🏠</span><small>Home</small></button>
-    <button class="mobile-bottom-btn" data-target="search-open"><span>🔍</span><small>Search</small></button>
-    <button class="mobile-bottom-btn" data-target="like"><span>❤️</span><small>Like</small></button>
-    <button class="mobile-bottom-btn" data-target="share"><span>🔗</span><small>Share</small></button>
-    <button class="mobile-bottom-btn" data-target="menu-open" id="mobileMenuToggle"><span>☰</span><small>Menu</small></button>
-  </nav>
-
-  <!-- SITE HEADER -->
-  <header class="site-header">
-    <!-- Top row: Title + Logos (desktop view) -->
-    <div class="header-row">
-      <img src="assets/logo.png" alt="The Mirror JK Logo" class="logo" />
-      <div class="header-title-wrap">
-        <h1 class="site-title">THE MIRROR JAMMU KASHMIR</h1>
-        <div class="site-subheading">
-          CHAMPION JUSTICE &amp; AMPLIFY THE VOICES OF THE UNHEARD
-        </div>
-      </div>
-      <img src="assets/logo.png" alt="The Mirror JK Logo" class="logo" />
+<header class="site-header">
+  <!-- MAIN TITLE ROW -->
+  <div class="header-mainrow">
+    <div class="brand-badge">
+      <img src="assets/logo.png" alt="The Mirror Jammu Kashmir Logo" class="brand-logo" />
     </div>
 
-    <!-- Utility row: Clock / Calendars / Social -->
-    <div class="header-utility-row">
-      <div class="datetime-block">
-        <span id="clockCEST" class="clock-ce">Sunday, 2 November 2025 — CEST</span>
-        <span class="sep-dot">•</span>
-        <span id="islamicDate" class="alt-cal">Islamic: ...</span>
-        <span class="sep-dot">•</span>
-        <span id="hindiDate" class="alt-cal">Hindi: ...</span>
-      </div>
-
-      <div class="social-block">
-        <a href="#" class="social-link" aria-label="X / Twitter">𝕏 <span class="social-text">Share</span></a>
-        <a href="#" class="social-link" aria-label="Instagram">📸 <span class="social-text">Instagram</span></a>
-        <a href="#" class="social-link" aria-label="YouTube">▶ <span class="social-text">YouTube</span></a>
-        <a href="#" class="social-link" aria-label="Facebook">📘 <span class="social-text">Facebook</span></a>
-        <a href="#" class="social-link" aria-label="Share link">🔗 <span class="social-text">Share</span></a>
+    <div class="brand-textblock">
+      <h1 class="site-title-headline">
+        THE MIRROR JAMMU KASHMIR
+      </h1>
+      <div class="site-subheading-line">
+        CHAMPION JUSTICE &amp; AMPLIFY THE VOICES OF THE UNHEARD… REVEALING THE TRUTH BEYOND BORDERS
       </div>
     </div>
-  </header>
 
-  <!-- BREAKING TICKER BAR -->
-  <section class="ticker-bar">
-    <div class="ticker-inner">
-      <span class="ticker-label">BREAKING</span>
+    <div class="brand-badge">
+      <img src="assets/logo.png" alt="The Mirror Jammu Kashmir Logo" class="brand-logo" />
+    </div>
+  </div>
+
+  <!-- TIME / CALENDARS / REGIONS WEATHER STRIP -->
+  <div class="header-infobar">
+    <div class="infobar-row infobar-top">
+      <span id="nowDateTime" class="infopill accent">
+        <!-- JS fills: Sunday 2 November 2025 at 15:06:09 -->
+      </span>
+
+      <span id="hijriDate" class="infopill">
+        <!-- JS fills: Jumada I 12, 1447 AH -->
+      </span>
+
+      <span id="vikramDate" class="infopill">
+        <!-- JS fills: Magha 2, 2082 VS -->
+      </span>
+
+      <span id="clockIST" class="infopill">
+        <!-- JS fills: IST (JKL): 19:36 -->
+      </span>
+
+      <span id="clockPKT" class="infopill">
+        <!-- JS fills: PKT (GBM): 19:06 -->
+      </span>
+    </div>
+
+    <div class="infobar-row locations-row">
+      <span class="infopill" id="meteoZurich">Zurich: --.-°C ⛅</span>
+      <span class="infopill" id="meteoJammu">Jammu: --.-°C ⛅</span>
+      <span class="infopill" id="meteoKashmir">Kashmir: --.-°C ⛅</span>
+      <span class="infopill" id="meteoLadakh">Ladakh: --.-°C ⛅</span>
+      <span class="infopill" id="meteoGilgit">Gilgit: --.-°C ⛅</span>
+      <span class="infopill" id="meteoBaltistan">Baltistan: --.-°C ⛅</span>
+      <span class="infopill" id="meteoMuzaffarabad">Muzaffarabad: --.-°C ⛅</span>
+    </div>
+  </div>
+
+  <!-- TICKER + LANGUAGE / SEARCH -->
+  <div class="header-toolsbar">
+    <div class="ticker-col">
+      <div class="ticker-label">BREAKING</div>
       <div class="ticker-track" id="tickerTrack">
-        <span class="ticker-item">URGENT: Human rights activists call for independent inquiry in Jammu &amp; Kashmir.</span>
-        <span class="ticker-item">STATEMENT: Voices from Gilgit-Baltistan demand constitutional rights and representation.</span>
-        <span class="ticker-item">GLOBAL: Exiled leaders appeal to UN &amp; EU for intervention on enforced disappearances.</span>
+        <span class="ticker-item">SEND YOUR EDITORIALS AND VLOGS VIA THE CONTACT FORM BELOW.</span>
+        <span class="ticker-item">MULTILINGUAL SUPPORT &amp; MOBILE-FIRST DESIGN ARE BUILT-IN.</span>
       </div>
     </div>
-  </section>
 
-  <!-- TOOLS BAR (Language + Search) -->
-  <section class="tools-bar">
-    <div class="tools-inner">
-      <div class="lang-select">
-        <label for="langDropdown" class="visually-hidden">Language</label>
-        <select id="langDropdown" class="lang-dropdown">
-          <option value="en">🌍 English</option>
-          <option value="de">Deutsch</option>
-          <option value="fr">Français</option>
-          <option value="ru">Русский</option>
-          <option value="he">עברית</option>
-          <option value="ur">اردو</option>
-          <option value="hi">हिन्दी</option>
-          <option value="ar">العربية</option>
-          <option value="es">Español</option>
-          <option value="it">Italiano</option>
-          <option value="nl">Nederlands</option>
-        </select>
-      </div>
+    <div class="tools-col">
+      <select id="langDropdown" class="lang-dropdown">
+        <option>English</option>
+        <option>Deutsch</option>
+        <option>Français</option>
+        <option>Русский</option>
+        <option>עברית</option>
+        <option>اردو</option>
+        <option>हिन्दी</option>
+        <option>العربية</option>
+        <option>Español</option>
+        <option>Italiano</option>
+        <option>Nederlands</option>
+      </select>
 
       <div class="search-wrap">
         <input
           type="text"
           class="search-input"
-          placeholder="Search articles, videos, documents..."
+          placeholder="Search…"
           aria-label="Search site"
         />
         <button class="search-btn" aria-label="Search">🔍</button>
       </div>
     </div>
-  </section>
-
-  <!-- NAVIGATION BAR WITH ICONS / DROPDOWNS -->
-  <nav class="main-nav" id="mainNav">
-    <ul class="nav-list">
-      <li class="nav-item has-dropdown">
-        <button class="nav-link">
-          <span class="nav-emoji">🏠</span> Home
-        </button>
-        <div class="dropdown-menu">
-          <a href="#about" class="dropdown-link">About</a>
-          <a href="#contact" class="dropdown-link" id="openContactForm">Contact</a>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link">
-          <span class="nav-emoji">🆕</span> Breaking News
-        </a>
-      </li>
-
-      <li class="nav-item has-dropdown">
-        <button class="nav-link">
-          <span class="nav-emoji">📝</span> Blog
-        </button>
-        <div class="dropdown-menu">
-          <a href="#editorial" class="dropdown-link">Editorial</a>
-          <a href="#opinion" class="dropdown-link">Opinion</a>
-          <a href="#updates" class="dropdown-link">Updates</a>
-        </div>
-      </li>
-
-      <li class="nav-item has-dropdown">
-        <button class="nav-link">
-          <span class="nav-emoji">🎥</span> Vlog
-        </button>
-        <div class="dropdown-menu">
-          <a href="#latest-videos" class="dropdown-link">Latest Videos</a>
-          <a href="#youtube" class="dropdown-link">YouTube Channel</a>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link">
-          <span class="nav-emoji">📰</span> E-Paper
-        </a>
-      </li>
-
-      <li class="nav-item has-dropdown">
-        <button class="nav-link">
-          <span class="nav-emoji">📍</span> Jammu Kashmir
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-link">Azad Kashmir</a>
-          <a class="dropdown-link">Gilgit-Baltistan</a>
-          <a class="dropdown-link">Ladakh</a>
-          <a class="dropdown-link">Jammu &amp; Kashmir Valley</a>
-        </div>
-      </li>
-
-      <li class="nav-item has-dropdown">
-        <button class="nav-link">
-          <span class="nav-emoji">📜</span> Historical Documents
-        </button>
-        <div class="dropdown-menu dropdown-wide">
-          <a class="dropdown-link">UN Resolutions</a>
-          <a class="dropdown-link">Ceasefire Agreements</a>
-          <a class="dropdown-link">Human Rights Reports</a>
-          <a class="dropdown-link">Testimonies &amp; Oral History</a>
-        </div>
-      </li>
-
-      <li class="nav-item has-dropdown">
-        <button class="nav-link">
-          <span class="nav-emoji">🕊️</span> UN &amp; Human Rights
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-link">UNHRC Sessions</a>
-          <a class="dropdown-link">Appeals &amp; Petitions</a>
-          <a class="dropdown-link">Detentions / Disappearances</a>
-        </div>
-      </li>
-
-      <li class="nav-item has-dropdown">
-        <button class="nav-link">
-          <span class="nav-emoji">🌐</span> Global Advocacy
-        </button>
-        <div class="dropdown-menu dropdown-wide">
-          <a class="dropdown-link">EU &amp; Parliament Outreach</a>
-          <a class="dropdown-link">Diaspora Action</a>
-          <a class="dropdown-link">Allied Voices</a>
-        </div>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- MAIN CONTENT AREA -->
-  <main class="main-layout">
-    <!-- LEFT: BLOG / ARTICLES -->
-    <section class="content-left" aria-labelledby="blogHeading">
-      <h2 id="blogHeading" class="section-heading">Latest Editorial &amp; Reports</h2>
-
-      <article class="post-card">
-        <img src="assets/post-thumb-1.jpg" alt="Report thumbnail" class="post-thumb" />
-        <div class="post-body">
-          <h3 class="post-title">
-            “We are still here”: Voices from Azad Kashmir call for civilian safety guarantees
-          </h3>
-          <div class="post-meta">Editorial • 2 Nov 2025 • The Mirror JK Desk</div>
-          <p class="post-excerpt">
-            Local communities describe night raids, communication blackouts, and fear of collective punishment.
-            Activists insist on international observation and medical access.
-          </p>
-          <button class="read-more-btn">READ MORE →</button>
-        </div>
-      </article>
-
-      <article class="post-card">
-        <img src="assets/post-thumb-2.jpg" alt="Report thumbnail" class="post-thumb" />
-        <div class="post-body">
-          <h3 class="post-title">
-            Gilgit-Baltistan: Autonomy demands grow as youth question resource extraction
-          </h3>
-          <div class="post-meta">Analysis • 1 Nov 2025 • Contributor</div>
-          <p class="post-excerpt">
-            Students and workers argue that mega-projects bring debt, not dignity. We map the demands that are rising.
-          </p>
-          <button class="read-more-btn">READ MORE →</button>
-        </div>
-      </article>
-
-      <article class="post-card">
-        <img src="assets/post-thumb-3.jpg" alt="Report thumbnail" class="post-thumb" />
-        <div class="post-body">
-          <h3 class="post-title">
-            UN &amp; Human Rights: Where are the missing?
-          </h3>
-          <div class="post-meta">Human Rights Dossier • 31 Oct 2025 • Field Notes</div>
-          <p class="post-excerpt">
-            Families from multiple districts describe arrests without warrant and prolonged incommunicado detention.
-          </p>
-          <button class="read-more-btn">READ MORE →</button>
-        </div>
-      </article>
-    </section>
-
-    <!-- RIGHT: VLOG / VIDEO -->
-    <aside class="content-right" aria-labelledby="vlogHeading">
-      <h2 id="vlogHeading" class="section-heading">Latest Vlog</h2>
-
-      <div class="video-card">
-        <div class="video-frame">
-          <!-- YouTube embed placeholder -->
-          <iframe
-            class="video-embed"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div class="video-info">
-          <div class="video-title">
-            Emergency Briefing: Situation Update from Jammu &amp; Kashmir
-          </div>
-          <div class="video-meta">YouTube • 2 Nov 2025 • The Mirror JK</div>
-          <p class="video-desc">
-            On-ground summary of detentions, shutdowns, and appeals submitted to European lawmakers.
-          </p>
-          <button class="watch-btn">WATCH ON YOUTUBE →</button>
-        </div>
-      </div>
-
-      <div class="epaper-card">
-        <div class="epaper-heading">📰 E-Paper / PDF Edition</div>
-        <p class="epaper-desc">
-          Read the printable edition of The Mirror Jammu Kashmir. Ideal for archives, media, and human rights delegations.
-        </p>
-        <button class="epaper-btn">OPEN E-PAPER (PDF)</button>
-      </div>
-    </aside>
-  </main>
-
-  <!-- NEWSLETTER + FOOTER -->
-  <footer class="site-footer">
-    <!-- Newsletter bar -->
-    <section class="newsletter-bar">
-      <h2 class="newsletter-heading">Stay informed. Stay vocal.</h2>
-      <form class="newsletter-form">
-        <input
-          type="email"
-          class="newsletter-input"
-          placeholder="Email for newsletter updates"
-          aria-label="Email address"
-        />
-        <button type="submit" class="newsletter-submit">Subscribe</button>
-      </form>
-    </section>
-
-    <!-- Footer columns -->
-    <section class="footer-main">
-      <div class="footer-col">
-        <h3 class="footer-title">Connect</h3>
-        <ul class="footer-links">
-          <li><a href="#" class="footer-link">Twitter / X</a></li>
-          <li><a href="#" class="footer-link">Instagram</a></li>
-          <li><a href="#" class="footer-link">YouTube</a></li>
-          <li><a href="#" class="footer-link">Facebook</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h3 class="footer-title">Contact</h3>
-        <ul class="footer-links">
-          <li class="footer-static">Email: contact@themirrorjk.com</li>
-          <li class="footer-static">Phone: +41 783 13 12 13</li>
-          <li><button class="footer-link btn-inline" id="openContactFormFooter">Open Contact Form →</button></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h3 class="footer-title">Legal</h3>
-        <ul class="footer-links">
-          <li><a href="#" class="footer-link">Impressum / Legal Notice</a></li>
-          <li><a href="#" class="footer-link">Privacy Policy</a></li>
-          <li><a href="#" class="footer-link">Terms of Use</a></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Copyright -->
-    <section class="footer-bottom">
-      <div class="copyright">
-        © <span id="yearNow">2025</span> THE MIRROR JAMMU KASHMIR — All rights reserved.
-      </div>
-      <div class="back-to-top">
-        <button class="back-top-btn" id="backToTopBtn">↑ Back to top</button>
-      </div>
-    </section>
-  </footer>
-
-  <!-- CONTACT FORM MODAL -->
-  <section class="modal-overlay" id="contactModal" aria-hidden="true">
-    <div class="modal-window" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
-      <header class="modal-header">
-        <h2 id="contactModalTitle">Contact Us</h2>
-        <button class="modal-close-btn" id="closeContactModal" aria-label="Close contact form">✕</button>
-      </header>
-
-      <form class="contact-form" name="contact" netlify>
-        <label class="contact-label">
-          Your Name
-          <input type="text" name="name" required class="contact-input" />
-        </label>
-
-        <label class="contact-label">
-          Email
-          <input type="email" name="email" required class="contact-input" />
-        </label>
-
-        <label class="contact-label">
-          Message
-          <textarea name="message" rows="4" required class="contact-textarea"></textarea>
-        </label>
-
-        <div class="contact-actions">
-          <button type="submit" class="contact-submit">Submit</button>
-          <button type="button" class="contact-exit" id="closeContactModalBottom">Exit</button>
-        </div>
-      </form>
-    </div>
-  </section>
-</body>
-</html>
+  </div>
+</header>
