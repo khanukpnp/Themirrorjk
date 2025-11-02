@@ -2,90 +2,83 @@
 <html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>THE MIRROR JAMMU KASHMIR</title>
-  <meta
-    name="description"
-    content="The Mirror Jammu Kashmir — Champion justice & amplify the voices of the unheard."
-  />
+  <meta name="description" content="The Mirror Jammu Kashmir — Champion justice & amplify the voices of the unheard." />
 
-  <!-- Fonts -->
+  <!-- Basic reset / fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet"
   />
 
-  <!-- Our stylesheet -->
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
 </head>
 
 <body class="theme-maroon">
-  <!-- ===== HEADER / BRAND ===== -->
+  <!-- MOBILE STICKY BOTTOM BAR -->
+  <nav class="mobile-bottom-bar">
+    <button class="mobile-bottom-btn" data-target="home"><span>🏠</span><small>Home</small></button>
+    <button class="mobile-bottom-btn" data-target="search-open"><span>🔍</span><small>Search</small></button>
+    <button class="mobile-bottom-btn" data-target="like"><span>❤️</span><small>Like</small></button>
+    <button class="mobile-bottom-btn" data-target="share"><span>🔗</span><small>Share</small></button>
+    <button class="mobile-bottom-btn" data-target="menu-open" id="mobileMenuToggle"><span>☰</span><small>Menu</small></button>
+  </nav>
+
+  <!-- SITE HEADER -->
   <header class="site-header">
-    <div class="brand-wrap">
-      <img src="assets/logo.png" alt="Logo" class="logo" />
-      <div class="brand-text">
-        <h1 class="site-title">
-          THE MIRROR JAMMU KASHMIR
-        </h1>
-        <div class="site-subtitle">
-          CHAMPION JUSTICE & AMPLIFY THE VOICES OF THE UNHEARD
+    <!-- Top row: Title + Logos (desktop view) -->
+    <div class="header-row">
+      <img src="assets/logo.png" alt="The Mirror JK Logo" class="logo" />
+      <div class="header-title-wrap">
+        <h1 class="site-title">THE MIRROR JAMMU KASHMIR</h1>
+        <div class="site-subheading">
+          CHAMPION JUSTICE &amp; AMPLIFY THE VOICES OF THE UNHEARD
         </div>
       </div>
-      <img src="assets/logo.png" alt="Logo" class="logo" />
+      <img src="assets/logo.png" alt="The Mirror JK Logo" class="logo" />
     </div>
 
-    <!-- clock + calendars + socials row -->
-    <div class="meta-row">
+    <!-- Utility row: Clock / Calendars / Social -->
+    <div class="header-utility-row">
       <div class="datetime-block">
-        <div id="clockCEST" class="clock"></div>
-        <div class="calendars">
-          <span id="islamicDate" class="calendar-chip">Islamic: —</span>
-          <span id="hindiDate" class="calendar-chip">Hindi: —</span>
-        </div>
+        <span id="clockCEST" class="clock-ce">Sunday, 2 November 2025 — CEST</span>
+        <span class="sep-dot">•</span>
+        <span id="islamicDate" class="alt-cal">Islamic: ...</span>
+        <span class="sep-dot">•</span>
+        <span id="hindiDate" class="alt-cal">Hindi: ...</span>
       </div>
 
-      <div class="social-row">
-        <button class="social-btn" aria-label="X / Twitter">
-          <span>𝕏</span><span class="social-label">Twitter / X</span>
-        </button>
-        <button class="social-btn" aria-label="YouTube">
-          <span>▶</span><span class="social-label">YouTube</span>
-        </button>
-        <button class="social-btn" aria-label="Instagram">
-          <span>⌁</span><span class="social-label">Instagram</span>
-        </button>
-        <button class="social-btn" aria-label="Facebook">
-          <span>ƒ</span><span class="social-label">Facebook</span>
-        </button>
-        <button class="social-btn" aria-label="Share">
-          <span>⤴</span><span class="social-label">Share</span>
-        </button>
+      <div class="social-block">
+        <a href="#" class="social-link" aria-label="X / Twitter">𝕏 <span class="social-text">Share</span></a>
+        <a href="#" class="social-link" aria-label="Instagram">📸 <span class="social-text">Instagram</span></a>
+        <a href="#" class="social-link" aria-label="YouTube">▶ <span class="social-text">YouTube</span></a>
+        <a href="#" class="social-link" aria-label="Facebook">📘 <span class="social-text">Facebook</span></a>
+        <a href="#" class="social-link" aria-label="Share link">🔗 <span class="social-text">Share</span></a>
       </div>
     </div>
   </header>
 
-  <!-- ===== NAV + TOOLS BAR ===== -->
-  <section class="nav-and-tools">
-
-    <!-- Ticker -->
-    <div class="ticker-bar">
-      <div class="ticker-label">BREAKING</div>
-      <div class="ticker-track">
-        <div class="ticker-text" id="tickerText">
-          • HUMAN RIGHTS VIOLATIONS MUST BE DOCUMENTED — JUSTICE DEMANDS WITNESSES • DEMOCRACY IS NOT SILENCE • KASHMIR IS WATCHING •
-        </div>
+  <!-- BREAKING TICKER BAR -->
+  <section class="ticker-bar">
+    <div class="ticker-inner">
+      <span class="ticker-label">BREAKING</span>
+      <div class="ticker-track" id="tickerTrack">
+        <span class="ticker-item">URGENT: Human rights activists call for independent inquiry in Jammu &amp; Kashmir.</span>
+        <span class="ticker-item">STATEMENT: Voices from Gilgit-Baltistan demand constitutional rights and representation.</span>
+        <span class="ticker-item">GLOBAL: Exiled leaders appeal to UN &amp; EU for intervention on enforced disappearances.</span>
       </div>
     </div>
+  </section>
 
-    <!-- lang + search line -->
-    <div class="lang-search-row">
-      <div class="lang-select-wrap">
-        <label for="langSelect" class="visually-hidden">Language</label>
-        <select id="langSelect" class="lang-select">
+  <!-- TOOLS BAR (Language + Search) -->
+  <section class="tools-bar">
+    <div class="tools-inner">
+      <div class="lang-select">
+        <label for="langDropdown" class="visually-hidden">Language</label>
+        <select id="langDropdown" class="lang-dropdown">
           <option value="en">🌍 English</option>
           <option value="de">Deutsch</option>
           <option value="fr">Français</option>
@@ -102,263 +95,286 @@
 
       <div class="search-wrap">
         <input
-          type="search"
+          type="text"
           class="search-input"
-          placeholder="Search articles, videos, documents…"
-          aria-label="Search"
+          placeholder="Search articles, videos, documents..."
+          aria-label="Search site"
         />
-        <button class="search-btn" aria-label="Search">
-          🔍
-        </button>
+        <button class="search-btn" aria-label="Search">🔍</button>
       </div>
     </div>
-
-    <!-- NAV BAR with icons + dropdowns -->
-    <nav class="main-nav" aria-label="Primary">
-      <ul class="nav-list">
-        <li class="nav-item dropdown">
-          <button class="nav-btn">
-            🏠 Home
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">About</a></li>
-            <li><a href="#" id="openContactModalFromNav">Contact</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item dropdown">
-          <button class="nav-btn">🆕 Breaking News</button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Latest Updates</a></li>
-            <li><a href="#">Crisis Alerts</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item dropdown">
-          <button class="nav-btn">📝 Blog</button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Editorials</a></li>
-            <li><a href="#">Opinion</a></li>
-            <li><a href="#">Analysis</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item dropdown">
-          <button class="nav-btn">🎥 Vlog</button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Field Reports</a></li>
-            <li><a href="#">Interviews</a></li>
-            <li><a href="#">Press Statements</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item dropdown">
-          <button class="nav-btn">📰 E-Paper</button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Today's PDF</a></li>
-            <li><a href="#">Archive</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item dropdown">
-          <button class="nav-btn">📍 Jammu Kashmir</button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Azad Kashmir</a></li>
-            <li><a href="#">Jammu</a></li>
-            <li><a href="#">Kashmir Valley</a></li>
-            <li><a href="#">Ladakh</a></li>
-            <li><a href="#">Gilgit-Baltistan</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item dropdown">
-          <button class="nav-btn">📜 Historical Documents</button>
-          <ul class="dropdown-menu">
-            <li><a href="#">UN Resolutions</a></li>
-            <li><a href="#">Accession / Letters</a></li>
-            <li><a href="#">Legal Briefings</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item dropdown">
-          <button class="nav-btn">🕊️ UN & Human Rights</button>
-          <ul class="dropdown-menu">
-            <li><a href="#">UNHRC</a></li>
-            <li><a href="#">Amnesty / HRW</a></li>
-            <li><a href="#">Disappearances</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item dropdown">
-          <button class="nav-btn">🌐 Global Advocacy</button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Statements</a></li>
-            <li><a href="#">Delegations</a></li>
-            <li><a href="#">International Support</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
   </section>
 
-  <!-- ===== MAIN CONTENT WRAP ===== -->
-  <main class="page-content">
-    <section class="content-grid">
-      <!-- === BLOG COLUMN === -->
-      <section class="blog-col">
-        <h2 class="section-heading">Latest Editorial & Analysis</h2>
-
-        <!-- posts will be injected here by script.js -->
-        <div id="postsContainer" class="posts-grid">
-          <!-- JS fills .post-card elements -->
+  <!-- NAVIGATION BAR WITH ICONS / DROPDOWNS -->
+  <nav class="main-nav" id="mainNav">
+    <ul class="nav-list">
+      <li class="nav-item has-dropdown">
+        <button class="nav-link">
+          <span class="nav-emoji">🏠</span> Home
+        </button>
+        <div class="dropdown-menu">
+          <a href="#about" class="dropdown-link">About</a>
+          <a href="#contact" class="dropdown-link" id="openContactForm">Contact</a>
         </div>
+      </li>
 
-        <button class="view-more-btn">View all articles →</button>
-      </section>
+      <li class="nav-item">
+        <a class="nav-link">
+          <span class="nav-emoji">🆕</span> Breaking News
+        </a>
+      </li>
 
-      <!-- === VLOG COLUMN === -->
-      <aside class="vlog-col">
-        <h2 class="section-heading">Latest Vlog / Field Report</h2>
+      <li class="nav-item has-dropdown">
+        <button class="nav-link">
+          <span class="nav-emoji">📝</span> Blog
+        </button>
+        <div class="dropdown-menu">
+          <a href="#editorial" class="dropdown-link">Editorial</a>
+          <a href="#opinion" class="dropdown-link">Opinion</a>
+          <a href="#updates" class="dropdown-link">Updates</a>
+        </div>
+      </li>
 
+      <li class="nav-item has-dropdown">
+        <button class="nav-link">
+          <span class="nav-emoji">🎥</span> Vlog
+        </button>
+        <div class="dropdown-menu">
+          <a href="#latest-videos" class="dropdown-link">Latest Videos</a>
+          <a href="#youtube" class="dropdown-link">YouTube Channel</a>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link">
+          <span class="nav-emoji">📰</span> E-Paper
+        </a>
+      </li>
+
+      <li class="nav-item has-dropdown">
+        <button class="nav-link">
+          <span class="nav-emoji">📍</span> Jammu Kashmir
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-link">Azad Kashmir</a>
+          <a class="dropdown-link">Gilgit-Baltistan</a>
+          <a class="dropdown-link">Ladakh</a>
+          <a class="dropdown-link">Jammu &amp; Kashmir Valley</a>
+        </div>
+      </li>
+
+      <li class="nav-item has-dropdown">
+        <button class="nav-link">
+          <span class="nav-emoji">📜</span> Historical Documents
+        </button>
+        <div class="dropdown-menu dropdown-wide">
+          <a class="dropdown-link">UN Resolutions</a>
+          <a class="dropdown-link">Ceasefire Agreements</a>
+          <a class="dropdown-link">Human Rights Reports</a>
+          <a class="dropdown-link">Testimonies &amp; Oral History</a>
+        </div>
+      </li>
+
+      <li class="nav-item has-dropdown">
+        <button class="nav-link">
+          <span class="nav-emoji">🕊️</span> UN &amp; Human Rights
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-link">UNHRC Sessions</a>
+          <a class="dropdown-link">Appeals &amp; Petitions</a>
+          <a class="dropdown-link">Detentions / Disappearances</a>
+        </div>
+      </li>
+
+      <li class="nav-item has-dropdown">
+        <button class="nav-link">
+          <span class="nav-emoji">🌐</span> Global Advocacy
+        </button>
+        <div class="dropdown-menu dropdown-wide">
+          <a class="dropdown-link">EU &amp; Parliament Outreach</a>
+          <a class="dropdown-link">Diaspora Action</a>
+          <a class="dropdown-link">Allied Voices</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- MAIN CONTENT AREA -->
+  <main class="main-layout">
+    <!-- LEFT: BLOG / ARTICLES -->
+    <section class="content-left" aria-labelledby="blogHeading">
+      <h2 id="blogHeading" class="section-heading">Latest Editorial &amp; Reports</h2>
+
+      <article class="post-card">
+        <img src="assets/post-thumb-1.jpg" alt="Report thumbnail" class="post-thumb" />
+        <div class="post-body">
+          <h3 class="post-title">
+            “We are still here”: Voices from Azad Kashmir call for civilian safety guarantees
+          </h3>
+          <div class="post-meta">Editorial • 2 Nov 2025 • The Mirror JK Desk</div>
+          <p class="post-excerpt">
+            Local communities describe night raids, communication blackouts, and fear of collective punishment.
+            Activists insist on international observation and medical access.
+          </p>
+          <button class="read-more-btn">READ MORE →</button>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <img src="assets/post-thumb-2.jpg" alt="Report thumbnail" class="post-thumb" />
+        <div class="post-body">
+          <h3 class="post-title">
+            Gilgit-Baltistan: Autonomy demands grow as youth question resource extraction
+          </h3>
+          <div class="post-meta">Analysis • 1 Nov 2025 • Contributor</div>
+          <p class="post-excerpt">
+            Students and workers argue that mega-projects bring debt, not dignity. We map the demands that are rising.
+          </p>
+          <button class="read-more-btn">READ MORE →</button>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <img src="assets/post-thumb-3.jpg" alt="Report thumbnail" class="post-thumb" />
+        <div class="post-body">
+          <h3 class="post-title">
+            UN &amp; Human Rights: Where are the missing?
+          </h3>
+          <div class="post-meta">Human Rights Dossier • 31 Oct 2025 • Field Notes</div>
+          <p class="post-excerpt">
+            Families from multiple districts describe arrests without warrant and prolonged incommunicado detention.
+          </p>
+          <button class="read-more-btn">READ MORE →</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- RIGHT: VLOG / VIDEO -->
+    <aside class="content-right" aria-labelledby="vlogHeading">
+      <h2 id="vlogHeading" class="section-heading">Latest Vlog</h2>
+
+      <div class="video-card">
         <div class="video-frame">
-          <!-- You can replace this embed with your own YouTube channel/video -->
+          <!-- YouTube embed placeholder -->
           <iframe
             class="video-embed"
             src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-            title="The Mirror JK - Field Report"
+            title="YouTube video player"
             frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
           ></iframe>
         </div>
-
-        <ul class="vlog-list">
-          <li>
-            <a href="#">UN Briefing: What was said on Kashmir today?</a>
-          </li>
-          <li><a href="#">Voices from Gilgit-Baltistan: autonomy now</a></li>
-          <li>
-            <a href="#">“We are still here”: families of the disappeared speak</a>
-          </li>
-        </ul>
-
-        <button class="view-more-btn">Watch more videos →</button>
-      </aside>
-    </section>
-  </main>
-
-  <!-- ===== NEWSLETTER BAR ===== -->
-  <section class="newsletter-wrap">
-    <div class="newsletter-inner">
-      <div class="newsletter-text">
-        <div class="newsletter-head">Stay informed.</div>
-        <div class="newsletter-sub">
-          Get urgent updates, human rights alerts, and editorial analysis.
+        <div class="video-info">
+          <div class="video-title">
+            Emergency Briefing: Situation Update from Jammu &amp; Kashmir
+          </div>
+          <div class="video-meta">YouTube • 2 Nov 2025 • The Mirror JK</div>
+          <p class="video-desc">
+            On-ground summary of detentions, shutdowns, and appeals submitted to European lawmakers.
+          </p>
+          <button class="watch-btn">WATCH ON YOUTUBE →</button>
         </div>
       </div>
-      <form class="newsletter-form" onsubmit="return false;">
+
+      <div class="epaper-card">
+        <div class="epaper-heading">📰 E-Paper / PDF Edition</div>
+        <p class="epaper-desc">
+          Read the printable edition of The Mirror Jammu Kashmir. Ideal for archives, media, and human rights delegations.
+        </p>
+        <button class="epaper-btn">OPEN E-PAPER (PDF)</button>
+      </div>
+    </aside>
+  </main>
+
+  <!-- NEWSLETTER + FOOTER -->
+  <footer class="site-footer">
+    <!-- Newsletter bar -->
+    <section class="newsletter-bar">
+      <h2 class="newsletter-heading">Stay informed. Stay vocal.</h2>
+      <form class="newsletter-form">
         <input
           type="email"
           class="newsletter-input"
-          placeholder="Email address"
+          placeholder="Email for newsletter updates"
           aria-label="Email address"
-          required
         />
-        <button class="newsletter-btn" type="submit">
-          Subscribe
-        </button>
+        <button type="submit" class="newsletter-submit">Subscribe</button>
+      </form>
+    </section>
+
+    <!-- Footer columns -->
+    <section class="footer-main">
+      <div class="footer-col">
+        <h3 class="footer-title">Connect</h3>
+        <ul class="footer-links">
+          <li><a href="#" class="footer-link">Twitter / X</a></li>
+          <li><a href="#" class="footer-link">Instagram</a></li>
+          <li><a href="#" class="footer-link">YouTube</a></li>
+          <li><a href="#" class="footer-link">Facebook</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-title">Contact</h3>
+        <ul class="footer-links">
+          <li class="footer-static">Email: contact@themirrorjk.com</li>
+          <li class="footer-static">Phone: +41 783 13 12 13</li>
+          <li><button class="footer-link btn-inline" id="openContactFormFooter">Open Contact Form →</button></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-title">Legal</h3>
+        <ul class="footer-links">
+          <li><a href="#" class="footer-link">Impressum / Legal Notice</a></li>
+          <li><a href="#" class="footer-link">Privacy Policy</a></li>
+          <li><a href="#" class="footer-link">Terms of Use</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Copyright -->
+    <section class="footer-bottom">
+      <div class="copyright">
+        © <span id="yearNow">2025</span> THE MIRROR JAMMU KASHMIR — All rights reserved.
+      </div>
+      <div class="back-to-top">
+        <button class="back-top-btn" id="backToTopBtn">↑ Back to top</button>
+      </div>
+    </section>
+  </footer>
+
+  <!-- CONTACT FORM MODAL -->
+  <section class="modal-overlay" id="contactModal" aria-hidden="true">
+    <div class="modal-window" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+      <header class="modal-header">
+        <h2 id="contactModalTitle">Contact Us</h2>
+        <button class="modal-close-btn" id="closeContactModal" aria-label="Close contact form">✕</button>
+      </header>
+
+      <form class="contact-form" name="contact" netlify>
+        <label class="contact-label">
+          Your Name
+          <input type="text" name="name" required class="contact-input" />
+        </label>
+
+        <label class="contact-label">
+          Email
+          <input type="email" name="email" required class="contact-input" />
+        </label>
+
+        <label class="contact-label">
+          Message
+          <textarea name="message" rows="4" required class="contact-textarea"></textarea>
+        </label>
+
+        <div class="contact-actions">
+          <button type="submit" class="contact-submit">Submit</button>
+          <button type="button" class="contact-exit" id="closeContactModalBottom">Exit</button>
+        </div>
       </form>
     </div>
   </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="site-footer">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <div class="footer-title">Contact</div>
-        <div class="footer-text">
-          Email:
-          <a href="mailto:contact@themirrorjk.com">contact@themirrorjk.com</a>
-          <br />
-          Phone: +41 783 13 12 13
-        </div>
-        <button id="openContactModal" class="footer-contact-btn">
-          Contact Form
-        </button>
-      </div>
-
-      <div class="footer-col">
-        <div class="footer-title">Social</div>
-        <ul class="footer-links">
-          <li><a href="#">Twitter / X</a></li>
-          <li><a href="#">YouTube Channel</a></li>
-          <li><a href="#">Instagram Feed</a></li>
-          <li><a href="#">Facebook Page</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <div class="footer-title">Sections</div>
-        <ul class="footer-links">
-          <li><a href="#">Breaking News</a></li>
-          <li><a href="#">Jammu Kashmir</a></li>
-          <li><a href="#">UN & Human Rights</a></li>
-          <li><a href="#">Global Advocacy</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <div class="footer-title">Legal</div>
-        <div class="footer-text small">
-          © <span id="yearNow"></span> The Mirror Jammu Kashmir.<br />
-          All rights reserved.
-          <br /><br />
-          Independent. Non-partisan. Human rights first.
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ===== CONTACT MODAL ===== -->
-  <div class="modal-overlay" id="contactModal" aria-hidden="true">
-    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
-      <div class="modal-header">
-        <div class="modal-title" id="contactTitle">Get in touch</div>
-        <button class="modal-close" id="closeContactModal" aria-label="Close">✕</button>
-      </div>
-
-      <form class="contact-form" name="contact" netlify netlify-honeypot="bot-field">
-        <!-- Netlify Forms hidden fields -->
-        <input type="hidden" name="form-name" value="contact" />
-        <p class="visually-hidden">
-          <label>Don’t fill this out: <input name="bot-field" /></label>
-        </p>
-
-        <label class="form-label">
-          Your Name
-          <input class="form-input" name="name" required />
-        </label>
-
-        <label class="form-label">
-          Your Email
-          <input class="form-input" type="email" name="email" required />
-        </label>
-
-        <label class="form-label">
-          Message
-          <textarea class="form-textarea" name="message" rows="4" required></textarea>
-        </label>
-
-        <div class="modal-actions">
-          <button type="submit" class="modal-submit">Submit</button>
-          <button type="button" class="modal-exit" id="closeModalAlt">
-            Exit
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- JS -->
-  <script src="script.js"></script>
 </body>
 </html>
